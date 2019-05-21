@@ -1,11 +1,15 @@
 package com.example.keabank.Activities;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,11 +56,12 @@ public class TransferActivity extends AppCompatActivity
     private EditText editSelectedEmail;
     private Button butTransfer;
 
-    //hidden menu and scroll view
-    private ScrollView scrollViewVerifyT;
+    //alertDialog for verifying
+    AlertDialog.Builder alertDialogVerify;
+    private static final int myIDPopup = 3;
     private EditText editVerEmail;
     private EditText editVerPassword;
-    private Button butVerify;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -105,13 +110,41 @@ public class TransferActivity extends AppCompatActivity
         spinnerToAccount.setAdapter(arrayAdapterSelectedA);
 
         //hidden menu
-        scrollViewVerifyT = findViewById(R.id.scrollVerify);
+
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        final View layout = inflater.inflate(R.layout.popup_verify_with_login, (ViewGroup) findViewById(R.id.root));
+        //final EditText password1 = (EditText) layout.findViewById(R.id.EditText_Pwd1);
+        //final EditText password2 = (EditText) layout.findViewById(R.id.EditText_Pwd2);
+        //final TextView error = (TextView) layout.findViewById(R.id.TextView_PwdProblem);
         editVerEmail = findViewById(R.id.editVerifyEmail);
         editVerPassword = findViewById(R.id.editVerifyPassword);
 
         //alertDialog for verifying
-        AlertDialog.Builder alertDialogVerify = new AlertDialog.Builder(this);
+        alertDialogVerify = new AlertDialog.Builder(this);
+        alertDialogVerify.setView(layout);
         alertDialogVerify.setMessage(R.string.verify_transfer);
+        alertDialogVerify.setCancelable(false);
+
+        alertDialogVerify.setPositiveButton(R.string.verify, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                Toast.makeText(TransferActivity.this, "test yes", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        alertDialogVerify.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                Toast.makeText(TransferActivity.this, "test no", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
 
         butTransfer = findViewById(R.id.butTransferT);
         butTransfer.setOnClickListener(new View.OnClickListener()
@@ -119,23 +152,10 @@ public class TransferActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                spinnerToAccount.setVisibility(View.GONE);
-                spinnerYourAccount.setVisibility(View.GONE);
-                butTransfer.setVisibility(View.GONE);
-                scrollViewVerifyT.setVisibility(View.VISIBLE);
+                alertDialogVerify.show();
             }
         });
 
-        butVerify = findViewById(R.id.butVerify);
-        butVerify.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                scrollViewVerifyT.setVisibility(View.GONE);
-                transferVal();
-            }
-        });
     }
 
     private void transferVal()

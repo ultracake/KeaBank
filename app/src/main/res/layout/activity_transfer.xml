@@ -117,51 +117,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerToAccountT" />
 
-    <ScrollView
-        android:id="@+id/scrollVerify"
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:layout_marginTop="8dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSelectedEmail">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textVerify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/verify_transfer" />
-
-            <EditText
-                android:id="@+id/editVerifyEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/Email"
-                android:inputType="textEmailAddress" />
-
-            <EditText
-                android:id="@+id/editVerifyPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/Password"
-                android:inputType="numberDecimal" />
-
-            <Button
-                android:id="@+id/butVerify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/verify" />
-        </LinearLayout>
-
-    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

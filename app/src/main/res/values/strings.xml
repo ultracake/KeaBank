@@ -42,4 +42,5 @@
     <string name="show">Show</string>
     <string name="verify_transfer">Please verify this transfer.</string>
     <string name="verify">Verify</string>
+    <string name="cancel">Cancel</string>
 </resources>
