@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">KeaBank</string>
+    <string name="Sign_up">Sign Up</string>
+    <string name="Login">Login</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="Logout">Logout</string>
+    <string name="Delete_acount">Delete Account</string>
+    <string name="Create_Account">Create an account</string>
+    <string name="select_account">Select an account</string>
+    <string name="insert_balance">Insert your balance</string>
+    <string name="kr" translatable="false">kr.</string>
+    <string name="delete_user">Delete User Account</string>
+    <string name="your_accounts">Your Accounts</string>
+    <string name="homepage">Home</string>
+    <string name="check_accountslist">See your accounts</string>
+    <string name="delete_account">Delete account</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="go_login">Go to login</string>
+    <string name="send_password">Send new password</string>
+    <string name="display_balance">Your balance:</string>
+    <string name="add_val">Insert money</string>
+    <string name="transfer_val">Transfer money</string>
+    <string name="withdraw_val">Withdraw money</string>
+    <string name="have_to_insert">Please insert something</string>
+    <string name="register_success">You´re now register successfully</string>
+    <string name="how_much">How much would you like to transfer</string>
+    <string name="select_who_transfer">Write email and select who you want to transfer to:</string>
+    <string name="transfer_complete">Transfer Complete</string>
+    <string name="in_progress">In progress</string>
+    <string name="textHid_insert">Insert the value you want to your account:</string>
+    <string name="textHid_withdraw">How much would you like to withdraw:</string>
+    <string name="edit_age">Age</string>
+    <string name="welcome_signup">When you sign up you will get 100 kr. to your Default and Budget account as free service for choosing KeaBank.</string>
+    <string name="not_old_enough">You are not old enough</string>
+    <string name="suc_withdraw_val">You successfully withdraw money</string>
+    <string name="suc_insert_val">You successfully inserted money</string>
+    <string name="not_enough_val">You don´t have enough money on account, too poor!</string>
+    <string name="doesnt_exist_email">The email doesn´st exist</string>
+    <string name="check_bills">Check your bills</string>
+    <string name="show_cur_bal">Show current balance</string>
+    <string name="show">Show</string>
+</resources>

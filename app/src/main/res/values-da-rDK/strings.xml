@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KeaBank</string>
+    <string name="Sign_up">tilmeld dig</string>
+    <string name="Login">Login</string>
+    <string name="Email">Email</string>
+    <string name="Password">kode</string>
+    <string name="Logout">Log ud</string>
+    <string name="Delete_acount">Slet konto</string>
+    <string name="Create_Account">Opret en konto</string>
+    <string name="select_account">"Vælg en konto "</string>
+    <string name="insert_balance">"Insæt dit beløb "</string>
+    <string name="delete_user">"Slet bruger kontoen "</string>
+    <string name="your_accounts">"Dine kontoer "</string>
+    <string name="homepage">Forside</string>
+    <string name="check_accountslist">Se dine kontoer</string>
+    <string name="delete_account">Slet konto</string>
+    <string name="forgot_password">Har du glemt koden</string>
+    <string name="go_login">Gå til login</string>
+    <string name="send_password">Send ny kode</string>
+    <string name="display_balance">Dit beløb:</string>
+    <string name="add_val">Indsæt penge</string>
+    <string name="transfer_val">Overfør penge</string>
+    <string name="withdraw_val">hæv penge</string>
+    <string name="have_to_insert">Du skal insætte noget</string>
+    <string name="register_success">"Du er nu registreret "</string>
+    <string name="how_much">Hvor meget vil du gerne overfører</string>
+    <string name="select_who_transfer">Skriv email  og vælg hvem du vil overføre til:</string>
+    <string name="transfer_complete">Overførelse er komplet</string>
+    <string name="in_progress">I gang med overførelsen</string>
+    <string name="textHid_insert">Indsæt et beløb til din Konto:</string>
+    <string name="textHid_withdraw">Hvor meget vil du gerne trække ud:</string>
+    <string name="edit_age">Alder</string>
+    <string name="welcome_signup">Når du melder dig ind får du 100 kr. på din Default og Budget konto som tak for at vælge KeaBank.</string>
+    <string name="not_old_enough">Du er ikke gammel nok</string>
+    <string name="suc_withdraw_val">Du har succesfuldlig trukket penge</string>
+    <string name="suc_insert_val">Du succesfuldlig indsatte penge</string>
+    <string name="not_enough_val">Du har ikke nok på kontoen, for fattigt!</string>
+    <string name="doesnt_exist_email">"Email´en eksistere ikke "</string>
+    <string name="check_bills">Tjek dine regninger</string>
+    <string name="show_cur_bal">"Vis nuværende balance "</string>
+    <string name="show">Vis</string>
+</resources>

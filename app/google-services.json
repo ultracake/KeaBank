@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "395329102386",
+    "firebase_url": "https://mybankapp-b5144.firebaseio.com",
+    "project_id": "mybankapp-b5144",
+    "storage_bucket": "mybankapp-b5144.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395329102386:android:be848ebfbf4b6328",
+        "android_client_info": {
+          "package_name": "com.example.keabank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395329102386-jqc7ivs8gt9h7bjgco6o1q3agdphbf7v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.keabank",
+            "certificate_hash": "375fb1924a53da619b0449cd6cd105b4e5c9d826"
+          }
+        },
+        {
+          "client_id": "395329102386-e3eduu3g5squkth00cmlv40rhehok4tn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5OqFICUtL5G5XMbQ27eCRpnreEGpbMpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395329102386-e3eduu3g5squkth00cmlv40rhehok4tn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
