@@ -40,4 +40,6 @@
     <string name="check_bills">Check your bills</string>
     <string name="show_cur_bal">Show current balance</string>
     <string name="show">Show</string>
+    <string name="verify_transfer">Please verify this transfer.</string>
+    <string name="verify">Verify</string>
 </resources>

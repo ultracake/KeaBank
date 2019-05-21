@@ -40,4 +40,6 @@
     <string name="check_bills">Tjek dine regninger</string>
     <string name="show_cur_bal">"Vis nuværende balance "</string>
     <string name="show">Vis</string>
+    <string name="verify_transfer">Bekræft venligst denne overførelse.</string>
+    <string name="verify">Bekræft</string>
 </resources>

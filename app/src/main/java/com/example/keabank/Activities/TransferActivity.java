@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -49,6 +50,12 @@ public class TransferActivity extends AppCompatActivity
     private EditText editInsertValue;
     private EditText editSelectedEmail;
     private Button butTransfer;
+
+    //hidden menu and scroll view
+    private ScrollView scrollViewVerifyT;
+    private EditText editVerEmail;
+    private EditText editVerPassword;
+    private Button butVerify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -96,12 +103,31 @@ public class TransferActivity extends AppCompatActivity
         ArrayAdapter arrayAdapterSelectedA = new ArrayAdapter(this, android.R.layout.simple_list_item_1, accountNamesSelectedTaget.getAccountNamesList());
         spinnerToAccount.setAdapter(arrayAdapterSelectedA);
 
+        //hidden menu
+        scrollViewVerifyT = findViewById(R.id.scrollVerify);
+        editVerEmail = findViewById(R.id.editVerifyEmail);
+        editVerPassword = findViewById(R.id.editVerifyPassword);
+
         butTransfer = findViewById(R.id.butTransferT);
         butTransfer.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                spinnerToAccount.setVisibility(View.GONE);
+                spinnerYourAccount.setVisibility(View.GONE);
+                butTransfer.setVisibility(View.GONE);
+                scrollViewVerifyT.setVisibility(View.VISIBLE);
+            }
+        });
+
+        butVerify = findViewById(R.id.butVerify);
+        butVerify.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                scrollViewVerifyT.setVisibility(View.GONE);
                 transferVal();
             }
         });
