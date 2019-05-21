@@ -1,6 +1,7 @@
 package com.example.keabank.Activities;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -107,6 +108,10 @@ public class TransferActivity extends AppCompatActivity
         scrollViewVerifyT = findViewById(R.id.scrollVerify);
         editVerEmail = findViewById(R.id.editVerifyEmail);
         editVerPassword = findViewById(R.id.editVerifyPassword);
+
+        //alertDialog for verifying
+        AlertDialog.Builder alertDialogVerify = new AlertDialog.Builder(this);
+        alertDialogVerify.setMessage(R.string.verify_transfer);
 
         butTransfer = findViewById(R.id.butTransferT);
         butTransfer.setOnClickListener(new View.OnClickListener()
