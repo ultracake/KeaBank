@@ -1,6 +1,6 @@
-## KeaBank
+# KeaBank
 
-# Discription:
+## Discription:
 
 This app is a bank app where you can signup as an user.
 Each user will be stored in Firebase.
@@ -8,8 +8,7 @@ The user can create accounts and check his/hers account.
 The user can Transfer, withdraw, insert money to own or others accounts.
 The app uses the realtime database.
 
-
-# Functionality:
+## Functionality:
 - Can create an account
 - Can view an account or a list of current accounts
 - Can Transfer money from one account to another account
@@ -23,9 +22,9 @@ The app uses the realtime database.
 - User can logout
 - User can Delete the whole account (user himself)
 
-# Extra Features:
+## Extra Features:
 
-# Components used:
+## Components used:
 - Buttons, Snackbar, Toast, Ratingbar, FloatingActionButton
 - ViewList
 - ScrollView
