@@ -1,6 +1,7 @@
 # KeaBank
 
 Discription:
+
 This app is a bank app where you can signup as an user.
 Each user will be stored in Firebase.
 The user can create accounts and check his/hers account.
