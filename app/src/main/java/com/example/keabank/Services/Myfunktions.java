@@ -102,19 +102,19 @@ public class Myfunktions
     {
         if (user.getBalanceBudget() <= 0)
         {
-            accountNames.getAccountNamesList().remove("Budget");
+            accountNames.getAccountNamesList().remove(accountBudget);
         }
         if (user.getBalanceBusiness() <= 0)
         {
-            accountNames.getAccountNamesList().remove("Business");
+            accountNames.getAccountNamesList().remove(accountBusiness);
         }
         if (user.getBalancePension() <= 0)
         {
-            accountNames.getAccountNamesList().remove("Pension");
+            accountNames.getAccountNamesList().remove(accountPension);
         }
         if (user.getBalanceSavings() <= 0)
         {
-            accountNames.getAccountNamesList().remove("Savings");
+            accountNames.getAccountNamesList().remove(accountSavings);
         }
         return accountNames;
     }
@@ -123,29 +123,36 @@ public class Myfunktions
     {
         if (user.getBalanceBudget() > 0)
         {
-            accountNames.getAccountNamesList().remove("Budget");
+            accountNames.getAccountNamesList().remove(accountBudget);
         }
         if (user.getBalanceBusiness() > 0)
         {
-            accountNames.getAccountNamesList().remove("Business");
+            accountNames.getAccountNamesList().remove(accountBusiness);
         }
         if ( user.getBalanceDefault() > 0)
         {
-            accountNames.getAccountNamesList().remove("Default");
+            accountNames.getAccountNamesList().remove(accountDefault);
         }
         if (user.getBalancePension() > 0)
         {
-            accountNames.getAccountNamesList().remove("Pension");
+            accountNames.getAccountNamesList().remove(accountPension);
         }
         if (user.getBalanceSavings() > 0)
         {
-            accountNames.getAccountNamesList().remove("Savings");
+            accountNames.getAccountNamesList().remove(accountSavings);
         }
-
         return accountNames;
     }
 
-    public AccountNames getAccountNames() {
-        return accountNames;
+    public boolean verifyWithLogin(String email, String password, User user)
+    {
+        if (email.equals(user.getEmail()) && password.equals(user.getPassword()))
+        {
+            return true;
+        }
+        return false;
     }
+
+
+
 }

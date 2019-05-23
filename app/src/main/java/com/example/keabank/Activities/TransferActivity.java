@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -58,9 +57,13 @@ public class TransferActivity extends AppCompatActivity
 
     //alertDialog for verifying
     AlertDialog.Builder alertDialogVerify;
-    private static final int myIDPopup = 3;
+   //private static final int myIDPopup = 3;
+    private LayoutInflater inflater;
+    private View layout;
     private EditText editVerEmail;
     private EditText editVerPassword;
+    private String email;
+    private String password;
 
 
     @Override
@@ -82,7 +85,7 @@ public class TransferActivity extends AppCompatActivity
                 user = intent.getParcelableExtra(ViewAccountActivity.EXTRA_viewAccount);
                 Log.d(TAG, "onCreate: ");
             }
-            if (intent.getParcelableExtra(TransferServiceActivity.EXTRA_transferServiceUser) != null)
+            else if(intent.getParcelableExtra(TransferServiceActivity.EXTRA_transferServiceUser) != null)
             {
                 Toast.makeText(TransferActivity.this, R.string.doesnt_exist_email , Toast.LENGTH_LONG).show();
                 user = intent.getParcelableExtra(TransferServiceActivity.EXTRA_transferServiceUser);
@@ -106,44 +109,8 @@ public class TransferActivity extends AppCompatActivity
         spinnerYourAccount.setAdapter(arrayAdapterYA);
 
         spinnerToAccount = findViewById(R.id.spinnerToAccountT);
-        ArrayAdapter arrayAdapterSelectedA = new ArrayAdapter(this, android.R.layout.simple_list_item_1, accountNamesSelectedTaget.getAccountNamesList());
+        final ArrayAdapter arrayAdapterSelectedA = new ArrayAdapter(this, android.R.layout.simple_list_item_1, accountNamesSelectedTaget.getAccountNamesList());
         spinnerToAccount.setAdapter(arrayAdapterSelectedA);
-
-        //hidden menu
-
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        final View layout = inflater.inflate(R.layout.popup_verify_with_login, (ViewGroup) findViewById(R.id.root));
-        //final EditText password1 = (EditText) layout.findViewById(R.id.EditText_Pwd1);
-        //final EditText password2 = (EditText) layout.findViewById(R.id.EditText_Pwd2);
-        //final TextView error = (TextView) layout.findViewById(R.id.TextView_PwdProblem);
-        editVerEmail = findViewById(R.id.editVerifyEmail);
-        editVerPassword = findViewById(R.id.editVerifyPassword);
-
-        //alertDialog for verifying
-        alertDialogVerify = new AlertDialog.Builder(this);
-        alertDialogVerify.setView(layout);
-        alertDialogVerify.setMessage(R.string.verify_transfer);
-        alertDialogVerify.setCancelable(false);
-
-        alertDialogVerify.setPositiveButton(R.string.verify, new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                Toast.makeText(TransferActivity.this, "test yes", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        alertDialogVerify.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                Toast.makeText(TransferActivity.this, "test no", Toast.LENGTH_LONG).show();
-            }
-        });
-
 
 
         butTransfer = findViewById(R.id.butTransferT);
@@ -152,46 +119,89 @@ public class TransferActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                alertDialogVerify.show();
+                if (!editInsertValue.getText().toString().isEmpty() && !editSelectedEmail.getText().toString().isEmpty())
+                {
+                    resetAlertDialog();
+                    alertDialogVerify.show();
+                } else
+                {
+                    Toast.makeText(TransferActivity.this, R.string.have_to_insert, Toast.LENGTH_LONG).show();
+                }
             }
         });
-
     }
 
     private void transferVal()
     {
-        if (!editInsertValue.getText().toString().isEmpty() && !editSelectedEmail.getText().toString().isEmpty())
+        value = Double.parseDouble(editInsertValue.getText().toString());
+        idYA = spinnerYourAccount.getSelectedItemPosition();
+        idYAForDB = myfunktions.findAccountID(accountNamesUser.getAccountNamesList().get(idYA));
+
+        if(value < myfunktions.checkWhichAccountValueByIdToUse(user,idYAForDB))
         {
-            value = Double.parseDouble(editInsertValue.getText().toString());
-            idYA = spinnerYourAccount.getSelectedItemPosition();
-            idYAForDB = myfunktions.findAccountID(accountNamesUser.getAccountNamesList().get(idYA));
+            selectedUserAccount = spinnerYourAccount.getSelectedItem().toString();
 
-            if(value < myfunktions.checkWhichAccountValueByIdToUse(user,idYAForDB))
-            {
-                selectedUserAccount = spinnerYourAccount.getSelectedItem().toString();
-
-                idSelectedToAccountForDB = spinnerToAccount.getSelectedItemPosition();
-                selectedEmail = editSelectedEmail.getText().toString();
+            idSelectedToAccountForDB = spinnerToAccount.getSelectedItemPosition();
+            selectedEmail = editSelectedEmail.getText().toString();
 
 
-                intent = new Intent(TransferActivity.this, TransferServiceActivity.class);
-                intent.putExtra(EXTRA_transferUser , user);
-                intent.putExtra(EXTRA_transferUserAccount, selectedUserAccount);
-                intent.putExtra(EXTRA_transferVal, value);
-                intent.putExtra(EXTRA_transferUserAccountID, idYAForDB );
+            intent = new Intent(TransferActivity.this, TransferServiceActivity.class);
+            intent.putExtra(EXTRA_transferUser , user);
+            intent.putExtra(EXTRA_transferUserAccount, selectedUserAccount);
+            intent.putExtra(EXTRA_transferVal, value);
+            intent.putExtra(EXTRA_transferUserAccountID, idYAForDB );
 
-                intent.putExtra(EXTRA_selectedEmailT, selectedEmail);
-                intent.putExtra(EXTRA_selectedAccount, idSelectedToAccountForDB);
-                startActivity(intent);
-            }else
-            {
-                Toast.makeText(TransferActivity.this, R.string.not_enough_val, Toast.LENGTH_LONG).show();
-            }
-
-        } else
+            intent.putExtra(EXTRA_selectedEmailT, selectedEmail);
+            intent.putExtra(EXTRA_selectedAccount, idSelectedToAccountForDB);
+            startActivity(intent);
+        }else
         {
-            Toast.makeText(TransferActivity.this, R.string.have_to_insert, Toast.LENGTH_LONG).show();
+            Toast.makeText(TransferActivity.this, R.string.not_enough_val, Toast.LENGTH_LONG).show();
         }
+    }
+
+    //if I don´t reset everything in alertDialog it will crash program after second call!
+    private void resetAlertDialog()
+    {
+        //popup window
+        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layout = inflater.inflate(R.layout.popup_verify_with_login, (ViewGroup) findViewById(R.id.root));
+        editVerEmail = layout.findViewById(R.id.editVerifyEmail);
+        editVerPassword = layout.findViewById(R.id.editVerifyPassword);
+
+        //alertDialog
+        alertDialogVerify = new AlertDialog.Builder(this);
+        alertDialogVerify.setView(layout);
+        alertDialogVerify.setMessage(R.string.verify_transfer);
+
+        //on confirm
+        alertDialogVerify.setPositiveButton(R.string.verify, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                email = editVerEmail.getText().toString();
+                password = editVerPassword.getText().toString();
+
+                if (myfunktions.verifyWithLogin(email, password, user))
+                {
+                    transferVal();
+                } else
+                {
+                    Toast.makeText(TransferActivity.this, R.string.verify_wrong_login, Toast.LENGTH_LONG).show();
+                    alertDialogVerify.setCancelable(true);
+                }
+            }
+        });
+        //on cancel
+        alertDialogVerify.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                Toast.makeText(TransferActivity.this, R.string.cancel, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 

@@ -7,7 +7,7 @@ public class User implements Parcelable
 {
     //user info
     private String id;
-    //the password is for show to exam, not for practice use!
+    //the password is use as verifier like NemId
     private String password;
     private String email;
     private int age;
