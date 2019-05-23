@@ -9,12 +9,18 @@ The app uses the realtime database.
 
 
 Functionality:
-- Can create a rating formular for your classes/courses 
-- Can rate classes/courses
-- Can edit classes/courses
-- Can delete rating formulars for you list of classes/courses
-- Save and load a list of classes/courses in our own memory on device
-- Send a mail med selected classes/courses
+- Can create an account
+- Can view an account or a list of current accounts
+- Can Transfer money from one account to another account
+- Can withdraw money for an account
+- Can insert money into an account
+- Save data from realtime database
+
+- User can signup
+- User can get a new password from Firebase if it´s forgotten
+- User can login
+- User can logout
+- User can Delete the whole account (user himself)
 
 Extra Features:
 
