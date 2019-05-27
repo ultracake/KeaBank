@@ -8,6 +8,12 @@
 - The app uses the realtime database.
 
 ## Functionality:
+- User can signup
+- User can reset password
+- User can login
+- User can logout
+- User can Delete the whole account (user himself)
+
 - Can create an account
 - Can view an account or a list of current accounts
 - Can Transfer money from one account to another account
@@ -15,15 +21,9 @@
 - Can insert money into an account
 - Save data from realtime database
 
-- User can signup
-- User can reset password
-- User can login
-- User can logout
-- User can Delete the whole account (user himself)
-
 ## Extra Features:
 
 ## Components used:
-- Buttons, Snackbar, Toast, Ratingbar, FloatingActionButton
+- Buttons, Snackbar, Toast, Ratingbar, FloatingActionButton. Alertdialog
 - ViewList
 - ScrollView
