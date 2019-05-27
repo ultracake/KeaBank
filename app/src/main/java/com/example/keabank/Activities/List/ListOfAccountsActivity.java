@@ -1,4 +1,4 @@
-package com.example.keabank.Activities;
+package com.example.keabank.Activities.List;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.keabank.Activities.Create.CreateAccountActivity;
+import com.example.keabank.Activities.ProfileActivity;
+import com.example.keabank.Activities.ViewAccountActivity;
 import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;

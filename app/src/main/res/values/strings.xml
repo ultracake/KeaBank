@@ -8,7 +8,7 @@
     <string name="Delete_acount">Delete Account</string>
     <string name="Create_Account">Create an account</string>
     <string name="select_account">Select an account</string>
-    <string name="insert_balance">Insert your balance</string>
+    <string name="insert_balance">Insert your balance:</string>
     <string name="kr" translatable="false">kr.</string>
     <string name="delete_user">Delete User Account</string>
     <string name="your_accounts">Your Accounts</string>
@@ -44,4 +44,9 @@
     <string name="verify">Verify</string>
     <string name="cancel">Cancel</string>
     <string name="verify_wrong_login">Sorry, wrong login</string>
+    <string name="your_bills">Your bills</string>
+    <string name="Create_bill">Create a bill</string>
+    <string name="insert_how_much_to_pay">Insert how much to pay:</string>
+    <string name="insert_name_on_bill">Insert name on bill:</string>
+    <string name="name">Name</string>
 </resources>

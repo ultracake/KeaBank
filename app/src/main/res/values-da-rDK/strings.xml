@@ -9,7 +9,7 @@
     <string name="Delete_acount">Slet konto</string>
     <string name="Create_Account">Opret en konto</string>
     <string name="select_account">"Vælg en konto "</string>
-    <string name="insert_balance">"Insæt dit beløb "</string>
+    <string name="insert_balance">"Insæt dit beløb: "</string>
     <string name="delete_user">"Slet bruger kontoen "</string>
     <string name="your_accounts">"Dine kontoer "</string>
     <string name="homepage">Forside</string>
@@ -44,4 +44,9 @@
     <string name="verify">Bekræft</string>
     <string name="cancel">Annullere</string>
     <string name="verify_wrong_login">Beklager, forkert login</string>
+    <string name="your_bills">Dine regninger</string>
+    <string name="Create_bill">Opret en regning</string>
+    <string name="insert_how_much_to_pay">Indsæt hvor meget du skal betale:</string>
+    <string name="insert_name_on_bill">Indsæt navn på regningen:</string>
+    <string name="name">Navn</string>
 </resources>

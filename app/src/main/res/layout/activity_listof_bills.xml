@@ -4,6 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ListOfBillsActivity">
+    android:background="@drawable/blue_background"
+    tools:context=".Activities.List.ListOfBillsActivity">
+
+    <TextView
+        android:id="@+id/textViewBills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/your_bills"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/butHomeBills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/homepage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/ListviewBillsId"
+        android:layout_width="395dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butHomeBills" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButCreateBill"
+        android:layout_width="53dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/ListviewBillsId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewBills"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:ignore="UnknownId" />
 
 </android.support.constraint.ConstraintLayout>
