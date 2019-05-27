@@ -200,6 +200,16 @@ public class ProfileActivity extends AppCompatActivity
             }
         });
 
-
+        butViewlistBills = findViewById(R.id.butShowViewlistBills);
+        butViewlistBills.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                intent = new Intent(ProfileActivity.this, ListOfBillsActivity.class);
+                intent.putExtra(EXTRA_Profile , user);
+                startActivity(intent);
+            }
+        });
     }
 }
