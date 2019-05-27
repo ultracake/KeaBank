@@ -45,6 +45,7 @@ public class ProfileActivity extends AppCompatActivity
     private Button butLogout;
     private Button butCreateAccount;
     private Button butViewlistAccounts;
+    private Button butViewlistBills;
 
     //Firbase
     private FirebaseAuth firebaseAuth;
@@ -65,9 +66,9 @@ public class ProfileActivity extends AppCompatActivity
         intent = getIntent();
         if (intent != null)
         {
-            if (intent.getParcelableExtra(ViewsOfAccountsActivity.EXTRA_viewAccounts) != null)
+            if (intent.getParcelableExtra(ListOfAccountsActivity.EXTRA_viewAccounts) != null)
             {
-                user = intent.getParcelableExtra(ViewsOfAccountsActivity.EXTRA_viewAccounts);
+                user = intent.getParcelableExtra(ListOfAccountsActivity.EXTRA_viewAccounts);
                 Log.d(TAG, "onCreate: ");
             }
         }
@@ -193,10 +194,12 @@ public class ProfileActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                intent = new Intent(ProfileActivity.this, ViewsOfAccountsActivity.class);
+                intent = new Intent(ProfileActivity.this, ListOfAccountsActivity.class);
                 intent.putExtra(EXTRA_Profile , user);
                 startActivity(intent);
             }
         });
+
+
     }
 }

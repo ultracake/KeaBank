@@ -10,12 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.BillActivity"></activity>
+        <activity android:name=".Activities.ListOfBillsActivity"></activity>
+        <activity android:name=".Activities.BillActivity" />
         <activity android:name=".Services.TransferServiceActivity" />
         <activity android:name=".Activities.TransferActivity" />
         <activity android:name=".Activities.ViewAccountActivity" />
         <activity android:name=".Activities.ForgotPasswordActivity" />
-        <activity android:name=".Activities.ViewsOfAccountsActivity" />
+        <activity android:name=".Activities.ListOfAccountsActivity" />
         <activity android:name=".Activities.CreateAccountActivity" />
         <activity android:name=".Activities.ProfileActivity" />
         <activity android:name=".Activities.LoginActivity" />

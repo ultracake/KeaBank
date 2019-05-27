@@ -71,10 +71,10 @@ public class ViewAccountActivity extends AppCompatActivity
         intent = getIntent();
         if (intent != null)
         {
-            if (intent.getParcelableExtra(ViewsOfAccountsActivity.EXTRA_viewAccounts) != null)
+            if (intent.getParcelableExtra(ListOfAccountsActivity.EXTRA_viewAccounts) != null)
             {
-                user = intent.getParcelableExtra(ViewsOfAccountsActivity.EXTRA_viewAccounts);
-                currentAccountName = intent.getStringExtra(ViewsOfAccountsActivity.EXTRA_ID);
+                user = intent.getParcelableExtra(ListOfAccountsActivity.EXTRA_viewAccounts);
+                currentAccountName = intent.getStringExtra(ListOfAccountsActivity.EXTRA_ID);
                 Log.d(TAG, "onCreate: ");
             }
         }

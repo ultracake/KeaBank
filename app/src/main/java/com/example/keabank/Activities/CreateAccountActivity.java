@@ -54,9 +54,9 @@ public class CreateAccountActivity extends AppCompatActivity
                 user = intent.getParcelableExtra(ProfileActivity.EXTRA_Profile);
                 Log.d(TAG, "onCreate: ");
             }
-            if (intent.getParcelableExtra(ViewsOfAccountsActivity.EXTRA_viewAccounts) != null)
+            if (intent.getParcelableExtra(ListOfAccountsActivity.EXTRA_viewAccounts) != null)
             {
-                user = intent.getParcelableExtra(ViewsOfAccountsActivity.EXTRA_viewAccounts);
+                user = intent.getParcelableExtra(ListOfAccountsActivity.EXTRA_viewAccounts);
                 Log.d(TAG, "onCreate: ");
             }
         }

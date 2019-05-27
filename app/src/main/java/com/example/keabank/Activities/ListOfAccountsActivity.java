@@ -20,7 +20,7 @@ import com.example.keabank.Services.Myfunktions;
 
 import java.util.ArrayList;
 
-public class ViewsOfAccountsActivity extends AppCompatActivity
+public class ListOfAccountsActivity extends AppCompatActivity
 {
     //class
     private User user;
@@ -47,7 +47,7 @@ public class ViewsOfAccountsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_views_of_accounts);
+        setContentView(R.layout.activity_list_of_accounts);
 
         myInit();
     }
@@ -76,7 +76,7 @@ public class ViewsOfAccountsActivity extends AppCompatActivity
         accountNames = myfunktions.checkIfExistForViews(user, accountNames);
 
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(ViewsOfAccountsActivity.this, android.R.layout.simple_list_item_1 ,accountNames.getAccountNamesList());
+        ArrayAdapter arrayAdapter = new ArrayAdapter(ListOfAccountsActivity.this, android.R.layout.simple_list_item_1 ,accountNames.getAccountNamesList());
         listView.setAdapter(arrayAdapter);
 
         //action listener for viewList
@@ -88,7 +88,7 @@ public class ViewsOfAccountsActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                intent = new Intent(ViewsOfAccountsActivity.this, ProfileActivity.class);
+                intent = new Intent(ListOfAccountsActivity.this, ProfileActivity.class);
                 intent.putExtra(EXTRA_viewAccounts, user);
                 startActivity(intent);
             }
@@ -100,7 +100,7 @@ public class ViewsOfAccountsActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                intent = new Intent(ViewsOfAccountsActivity.this, CreateAccountActivity.class);
+                intent = new Intent(ListOfAccountsActivity.this, CreateAccountActivity.class);
                 intent.putExtra(EXTRA_viewAccounts,user);
                 startActivity(intent);
             }
@@ -115,9 +115,9 @@ public class ViewsOfAccountsActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Toast.makeText(ViewsOfAccountsActivity.this, "you click: " + list.get(position).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ListOfAccountsActivity.this, "you click: " + list.get(position).toString(), Toast.LENGTH_LONG).show();
 
-                intent = new Intent(ViewsOfAccountsActivity.this, ViewAccountActivity.class);
+                intent = new Intent(ListOfAccountsActivity.this, ViewAccountActivity.class);
                 intent.putExtra(EXTRA_viewAccounts, user);
                 intent.putExtra(EXTRA_ID, accountNames.getAccountNamesList().get(position));
                 startActivity(intent);
@@ -136,7 +136,7 @@ public class ViewsOfAccountsActivity extends AppCompatActivity
                     public void onClick(View v)
                     {
                         nameForVal = accountNames.getAccountNamesList().get(position) ;
-                        Toast.makeText(ViewsOfAccountsActivity.this, "Current value: " + myfunktions.checkWhichAccountValToUse(user, nameForVal), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ListOfAccountsActivity.this, "Current value: " + myfunktions.checkWhichAccountValToUse(user, nameForVal), Toast.LENGTH_LONG).show();
                     }
                 });
                 snackbar.show();
