@@ -52,7 +52,8 @@ public class User implements Parcelable
         balanceSavings = in.readInt();
     }
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
+    public static final Creator<User> CREATOR = new Creator<User>()
+    {
         @Override
         public User createFromParcel(Parcel in) {
             return new User(in);

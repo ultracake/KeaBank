@@ -22,4 +22,9 @@ public class WriteToDBBill
         this.database = FirebaseDatabase.getInstance();
         this.databaseReference = database.getReference().child("Bills");
     }
+
+    public void createBill()
+    {
+        
+    }
 }

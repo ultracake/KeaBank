@@ -49,4 +49,6 @@
     <string name="insert_how_much_to_pay">Insert how much to pay:</string>
     <string name="insert_name_on_bill">Insert name on bill:</string>
     <string name="name">Name</string>
+    <string name="suc_register_account">Your account is register</string>
+    <string name="suc_bill_register">Your bill is register</string>
 </resources>

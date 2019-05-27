@@ -107,7 +107,7 @@ public class CreateAccountActivity extends AppCompatActivity
             idForDB = myfunktions.findAccountID(accountNames.getAccountNamesList().get(id));
             writeToDBAccount.transfer(user.getEmail(), idForDB, value);
 
-            Toast.makeText(CreateAccountActivity.this, "Your account is register", Toast.LENGTH_LONG).show();
+            Toast.makeText(CreateAccountActivity.this, R.string.suc_register_account, Toast.LENGTH_LONG).show();
             editInsertValue.setText("");
             goToProfile();
         }else
