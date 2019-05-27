@@ -6,11 +6,11 @@ import android.os.Parcelable;
 public class Bill implements Parcelable
 {
     //user info
-    private String email;
-    //bill info
     private String id;
+    //bill info
     private String name;
     private Double value;
+    private int date;
     private int paid;
 
     //empty constructor for Firebase
@@ -18,18 +18,17 @@ public class Bill implements Parcelable
     {
     }
 
-    public Bill(String email, String id, String name, Double value)
+    public Bill(String id, String name, Double value)
     {
-        this.email = email;
         this.id = id;
         this.name = name;
         this.value = value;
+        this.date = 0;
         this.paid = 0;
     }
 
     protected Bill(Parcel in)
     {
-        email = in.readString();
         id = in.readString();
         name = in.readString();
         value = in.readDouble();
@@ -47,14 +46,6 @@ public class Bill implements Parcelable
             return new Bill[size];
         }
     };
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getId() {
         return id;
@@ -88,14 +79,22 @@ public class Bill implements Parcelable
         this.paid = paid;
     }
 
+    public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags)
     {
-        dest.writeString(email);
         dest.writeString(id);
         dest.writeString(name);
         dest.writeDouble(value);
         dest.writeInt(paid);
+        dest.writeInt(date);
     }
 
     @Override
