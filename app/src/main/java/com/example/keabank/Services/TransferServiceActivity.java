@@ -11,7 +11,6 @@ import com.example.keabank.Activities.ProfileActivity;
 import com.example.keabank.Activities.TransferActivity;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
-import com.google.android.gms.common.api.Batch;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +37,7 @@ public class TransferServiceActivity extends AppCompatActivity
     //class
     private User user;
     private User selectedUser;
-    private WriteToDB writeToDB;
+    private WriteToDBAccount writeToDBAccount;
     private Myfunktions myfunktions;
 
     private Intent intent;
@@ -86,7 +85,7 @@ public class TransferServiceActivity extends AppCompatActivity
         }
 
         //class
-        writeToDB = new WriteToDB();
+        writeToDBAccount = new WriteToDBAccount();
         myfunktions = new Myfunktions();
 
         currentUserAccountVal = myfunktions.checkWhichAccountValToUse(user, selectedUserAccount);
@@ -106,9 +105,9 @@ public class TransferServiceActivity extends AppCompatActivity
                         selectedsAccountsVal = 0.00 + myfunktions.checkWhichAccountValueByIdToUse(selectedUser, idSelectedAForDB);
 
                         //from
-                        writeToDB.transfer(user.getEmail(),idYAForDB, currentUserAccountVal - value);
+                        writeToDBAccount.transfer(user.getEmail(),idYAForDB, currentUserAccountVal - value);
                         //to
-                        writeToDB.transfer(selectedEmail, idSelectedAForDB, value + selectedsAccountsVal);
+                        writeToDBAccount.transfer(selectedEmail, idSelectedAForDB, value + selectedsAccountsVal);
 
                         Toast.makeText(TransferServiceActivity.this, selectedEmail + " got: " + value, Toast.LENGTH_LONG).show();
                         goToProfile();

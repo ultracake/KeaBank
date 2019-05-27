@@ -16,13 +16,13 @@ import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
 import com.example.keabank.Services.Myfunktions;
-import com.example.keabank.Services.WriteToDB;
+import com.example.keabank.Services.WriteToDBAccount;
 
 public class ViewAccountActivity extends AppCompatActivity
 {
     //class
     private Myfunktions myfunktions;
-    private WriteToDB writeToDB;
+    private WriteToDBAccount writeToDBAccount;
     private User user;
     private AccountNames accountNames;
 
@@ -81,7 +81,7 @@ public class ViewAccountActivity extends AppCompatActivity
         }
 
         //class
-        writeToDB = new WriteToDB();
+        writeToDBAccount = new WriteToDBAccount();
         myfunktions = new Myfunktions();
         accountNames = new AccountNames();
 
@@ -130,7 +130,7 @@ public class ViewAccountActivity extends AppCompatActivity
                 valueFormEdit = Double.parseDouble(editValHidDB.getText().toString());
 
                 valueToDB = valueFormEdit  + currentVal;
-                writeToDB.transfer(user.getEmail(),idToDB, valueToDB);
+                writeToDBAccount.transfer(user.getEmail(),idToDB, valueToDB);
                 Toast.makeText(ViewAccountActivity.this, R.string.suc_insert_val, Toast.LENGTH_LONG).show();
                 goToProfile();
             }
@@ -154,7 +154,7 @@ public class ViewAccountActivity extends AppCompatActivity
                 if (valueFormEdit <= currentVal)
                 {
                     valueToDB = currentVal - valueFormEdit;
-                    writeToDB.transfer(user.getEmail(),idToDB, valueToDB);
+                    writeToDBAccount.transfer(user.getEmail(),idToDB, valueToDB);
                     Toast.makeText(ViewAccountActivity.this, R.string.suc_withdraw_val, Toast.LENGTH_LONG).show();
                     goToProfile();
                 }

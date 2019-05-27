@@ -11,7 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class WriteToDB
+public class WriteToDBAccount
 {
     //class
     private User user;
@@ -23,7 +23,7 @@ public class WriteToDB
     //to next activity
     private static final String TAG = "debug";
 
-    public WriteToDB()
+    public WriteToDBAccount()
     {
         this.accountNames = new  AccountNames();
 

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.keabank.Activities.Create.CreateAccountActivity;
+import com.example.keabank.Activities.Create.CreateBillActivity;
 import com.example.keabank.Activities.ProfileActivity;
 import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.User;
@@ -82,7 +83,7 @@ public class ListOfBillsActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                intent = new Intent(ListOfBillsActivity.this, CreateAccountActivity.class);
+                intent = new Intent(ListOfBillsActivity.this, CreateBillActivity.class);
                 intent.putExtra(EXTRA_viewBills, user);
                 startActivity(intent);
             }
