@@ -9,9 +9,7 @@
 - The app uses the realtime database.
 
 
-Is test on this device:
-
-Pixel 3 API 25: resolution 1080*2160 (440dpi) 
+Is test on this device: Pixel 3 API 25: resolution 1080*2160 (440dpi) 
 
 ## Functionality:
 - User can signup
