@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.keabank.Activities.Create.CreateAccountActivity;
 import com.example.keabank.Activities.ProfileActivity;
-import com.example.keabank.Activities.ViewAccountActivity;
+import com.example.keabank.Activities.Views.ViewAccountActivity;
 import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
@@ -77,7 +77,6 @@ public class ListOfAccountsActivity extends AppCompatActivity
         accountNames = new AccountNames();
         listView = findViewById(R.id.ListviewId);
         accountNames = myfunktions.checkIfExistForViews(user, accountNames);
-
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(ListOfAccountsActivity.this, android.R.layout.simple_list_item_1 ,accountNames.getAccountNamesList());
         listView.setAdapter(arrayAdapter);

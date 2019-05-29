@@ -51,4 +51,6 @@
     <string name="name">Navn</string>
     <string name="suc_register_account">Din konto er nu registeret</string>
     <string name="suc_bill_register">Din regning er blivet registeret</string>
+    <string name="want_to_delete">Vil du gerne slette denne regning</string>
+    <string name="delete_bill">Slet regning</string>
 </resources>

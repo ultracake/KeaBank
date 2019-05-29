@@ -12,10 +12,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.Create.CreateBillActivity"></activity>
         <activity android:name=".Activities.List.ListOfBillsActivity" />
-        <activity android:name=".Activities.BillActivity" />
+        <activity android:name=".Activities.Views.ViewBillActivity" />
         <activity android:name=".Services.TransferServiceActivity" />
         <activity android:name=".Activities.TransferActivity" />
-        <activity android:name=".Activities.ViewAccountActivity" />
+        <activity android:name=".Activities.Views.ViewAccountActivity" />
         <activity android:name=".Activities.ForgotPasswordActivity" />
         <activity android:name=".Activities.List.ListOfAccountsActivity" />
         <activity android:name=".Activities.Create.CreateAccountActivity" />

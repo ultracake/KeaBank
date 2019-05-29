@@ -33,7 +33,6 @@ public class ProfileActivity extends AppCompatActivity
     //class
     private User user;
 
-
     private Intent intent;
 
     //to next activity
@@ -76,11 +75,12 @@ public class ProfileActivity extends AppCompatActivity
             }
         }
 
+        //for getting the right userID and for delete
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
+        //updates the user and his account to the app
         databaseReference = FirebaseDatabase.getInstance().getReference("User");
-
         if(user == null)
         {
             databaseReference.addValueEventListener(new ValueEventListener()
@@ -103,7 +103,6 @@ public class ProfileActivity extends AppCompatActivity
                 }
             });
         }
-
 
         progressBar = findViewById(R.id.progressBarProfile);
         userEmail = findViewById(R.id.textViewUser);

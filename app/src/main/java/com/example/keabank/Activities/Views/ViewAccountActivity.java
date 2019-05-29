@@ -1,4 +1,4 @@
-package com.example.keabank.Activities;
+package com.example.keabank.Activities.Views;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.keabank.Activities.List.ListOfAccountsActivity;
+import com.example.keabank.Activities.ProfileActivity;
+import com.example.keabank.Activities.TransferActivity;
 import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;

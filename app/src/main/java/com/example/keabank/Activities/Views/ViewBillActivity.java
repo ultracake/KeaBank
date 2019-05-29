@@ -1,11 +1,11 @@
-package com.example.keabank.Activities;
+package com.example.keabank.Activities.Views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.keabank.R;
 
-public class BillActivity extends AppCompatActivity
+public class ViewBillActivity extends AppCompatActivity
 {
 
     @Override
