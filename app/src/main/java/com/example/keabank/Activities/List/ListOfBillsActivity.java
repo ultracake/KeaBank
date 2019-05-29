@@ -36,7 +36,6 @@ public class ListOfBillsActivity extends AppCompatActivity
     //class
     private User user;
     private Bill bill;
-    private Myfunktions myfunktions;
 
     private Intent intent;
     private ListView listView;
@@ -78,10 +77,14 @@ public class ListOfBillsActivity extends AppCompatActivity
                 user = intent.getParcelableExtra(ProfileActivity.EXTRA_Profile);
                 Log.d(TAG, "onCreate: ");
             }
+            if (intent.getParcelableExtra(ListOfBillsActivity.EXTRA_viewBills) != null)
+            {
+                user = intent.getParcelableExtra(ListOfBillsActivity.EXTRA_viewBills);
+                Log.d(TAG, "onCreate: ");
+            }
         }
 
-        //class
-        myfunktions = new Myfunktions();
+
 
         //snackbar
         snackbar = Snackbar.make(findViewById(R.id.ListviewBillsId), R.string.want_to_delete, Snackbar.LENGTH_LONG);
@@ -179,11 +182,19 @@ public class ListOfBillsActivity extends AppCompatActivity
                     {
                         databaseReference.child(myBillList.get(position).getName()).removeValue();
                         Toast.makeText(ListOfBillsActivity.this,  myBillList.get(position).getName() + " is deleted!", Toast.LENGTH_LONG).show();
+                        reloadAct();
                     }
                 });
                 snackbar.show();
                 return true;
             }
         });
+    }
+
+    private void reloadAct()
+    {
+        intent = new Intent(ListOfBillsActivity.this, ListOfBillsActivity.class);
+        intent.putExtra(EXTRA_viewBills, user);
+        startActivity(intent);
     }
 }

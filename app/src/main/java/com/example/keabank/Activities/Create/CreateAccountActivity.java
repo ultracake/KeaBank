@@ -17,12 +17,12 @@ import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
 import com.example.keabank.Services.Myfunktions;
-import com.example.keabank.Services.WriteToDBAccount;
+import com.example.keabank.Services.AccountRepo;
 
 public class CreateAccountActivity extends AppCompatActivity
 {
     //class
-    private WriteToDBAccount writeToDBAccount;
+    private AccountRepo accountRepo;
     private Myfunktions myfunktions;
     private User user;
     private AccountNames accountNames;
@@ -64,7 +64,7 @@ public class CreateAccountActivity extends AppCompatActivity
         }
 
         //class
-        writeToDBAccount = new WriteToDBAccount();
+        accountRepo = new AccountRepo();
         myfunktions = new Myfunktions();
         accountNames = new AccountNames();
 
@@ -105,7 +105,7 @@ public class CreateAccountActivity extends AppCompatActivity
         if( value > 0)
         {
             idForDB = myfunktions.findAccountID(accountNames.getAccountNamesList().get(id));
-            writeToDBAccount.transfer(user.getEmail(), idForDB, value);
+            accountRepo.transfer(user.getEmail(), idForDB, value);
 
             Toast.makeText(CreateAccountActivity.this, R.string.suc_register_account, Toast.LENGTH_LONG).show();
             editInsertValue.setText("");

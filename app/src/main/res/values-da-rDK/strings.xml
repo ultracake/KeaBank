@@ -53,4 +53,10 @@
     <string name="suc_bill_register">Din regning er blivet registeret</string>
     <string name="want_to_delete">Vil du gerne slette denne regning</string>
     <string name="delete_bill">Slet regning</string>
+    <string name="total">Total:</string>
+    <string name="status">Status:</string>
+    <string name="paid">Betalt</string>
+    <string name="not_paid">Ikke betalt</string>
+    <string name="pay_now">Betal nu</string>
+    <string name="auto_pay">Auto betal</string>
 </resources>

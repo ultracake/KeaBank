@@ -16,13 +16,13 @@ import com.example.keabank.Models.Bill;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
 import com.example.keabank.Services.Myfunktions;
-import com.example.keabank.Services.WriteToDBBill;
+import com.example.keabank.Services.BillRepo;
 
 
 public class CreateBillActivity extends AppCompatActivity
 {
     //class
-    private WriteToDBBill writeToDBBill;
+    private BillRepo billRepo;
     private Myfunktions myfunktions;
     private User user;
     private Bill bill;
@@ -59,7 +59,7 @@ public class CreateBillActivity extends AppCompatActivity
         }
 
         //class
-        writeToDBBill = new WriteToDBBill();
+        billRepo = new BillRepo();
 
         editInsertNameBill = findViewById(R.id.editNameBill);
         editInsertBillVal = findViewById(R.id.editInsertValueBill);
@@ -76,7 +76,7 @@ public class CreateBillActivity extends AppCompatActivity
                 if (value != 0 || !name.isEmpty())
                 {
                     //Creates bill in database
-                    writeToDBBill.createBill(user, name, value);
+                    billRepo.createBill(user, name, value);
 
                     Toast.makeText(CreateBillActivity.this, R.string.suc_bill_register, Toast.LENGTH_LONG).show();
                     goToProfile();

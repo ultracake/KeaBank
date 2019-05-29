@@ -37,7 +37,7 @@ public class TransferServiceActivity extends AppCompatActivity
     //class
     private User user;
     private User selectedUser;
-    private WriteToDBAccount writeToDBAccount;
+    private AccountRepo accountRepo;
     private Myfunktions myfunktions;
 
     private Intent intent;
@@ -85,7 +85,7 @@ public class TransferServiceActivity extends AppCompatActivity
         }
 
         //class
-        writeToDBAccount = new WriteToDBAccount();
+        accountRepo = new AccountRepo();
         myfunktions = new Myfunktions();
 
         currentUserAccountVal = myfunktions.checkWhichAccountValToUse(user, selectedUserAccount);
@@ -105,9 +105,9 @@ public class TransferServiceActivity extends AppCompatActivity
                         selectedsAccountsVal = 0.00 + myfunktions.checkWhichAccountValueByIdToUse(selectedUser, idSelectedAForDB);
 
                         //from
-                        writeToDBAccount.transfer(user.getEmail(),idYAForDB, currentUserAccountVal - value);
+                        accountRepo.transfer(user.getEmail(),idYAForDB, currentUserAccountVal - value);
                         //to
-                        writeToDBAccount.transfer(selectedEmail, idSelectedAForDB, value + selectedsAccountsVal);
+                        accountRepo.transfer(selectedEmail, idSelectedAForDB, value + selectedsAccountsVal);
 
                         Toast.makeText(TransferServiceActivity.this, selectedEmail + " got: " + value, Toast.LENGTH_LONG).show();
                         goToProfile();

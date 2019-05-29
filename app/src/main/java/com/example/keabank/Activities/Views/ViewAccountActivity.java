@@ -18,13 +18,13 @@ import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
 import com.example.keabank.Services.Myfunktions;
-import com.example.keabank.Services.WriteToDBAccount;
+import com.example.keabank.Services.AccountRepo;
 
 public class ViewAccountActivity extends AppCompatActivity
 {
     //class
     private Myfunktions myfunktions;
-    private WriteToDBAccount writeToDBAccount;
+    private AccountRepo accountRepo;
     private User user;
     private AccountNames accountNames;
 
@@ -33,8 +33,8 @@ public class ViewAccountActivity extends AppCompatActivity
     private double currentVal = 0.00;
 
     //widgets
-    private TextView textCurrentVal;
     private TextView textCurrentAccount;
+    private TextView textCurrentVal;
 
     //hidden menu and scroll view
     private ScrollView scrollView;
@@ -49,7 +49,6 @@ public class ViewAccountActivity extends AppCompatActivity
     private double valueFormEdit = 0.00;
     private int showInsert = 1;
     private int showWithdraw = 0;
-
 
     private Button butTransfer;
     private Button butInsert;
@@ -83,7 +82,7 @@ public class ViewAccountActivity extends AppCompatActivity
         }
 
         //class
-        writeToDBAccount = new WriteToDBAccount();
+        accountRepo = new AccountRepo();
         myfunktions = new Myfunktions();
         accountNames = new AccountNames();
 
@@ -101,7 +100,6 @@ public class ViewAccountActivity extends AppCompatActivity
         editValHidDB = findViewById(R.id.editInsertandWithdraw);
 
         //buttons
-
         butInsert = findViewById(R.id.butAddValVA);
         butInsert.setOnClickListener(new View.OnClickListener()
         {
@@ -132,7 +130,7 @@ public class ViewAccountActivity extends AppCompatActivity
                 valueFormEdit = Double.parseDouble(editValHidDB.getText().toString());
 
                 valueToDB = valueFormEdit  + currentVal;
-                writeToDBAccount.transfer(user.getEmail(),idToDB, valueToDB);
+                accountRepo.transfer(user.getEmail(),idToDB, valueToDB);
                 Toast.makeText(ViewAccountActivity.this, R.string.suc_insert_val, Toast.LENGTH_LONG).show();
                 goToProfile();
             }
@@ -156,7 +154,7 @@ public class ViewAccountActivity extends AppCompatActivity
                 if (valueFormEdit <= currentVal)
                 {
                     valueToDB = currentVal - valueFormEdit;
-                    writeToDBAccount.transfer(user.getEmail(),idToDB, valueToDB);
+                    accountRepo.transfer(user.getEmail(),idToDB, valueToDB);
                     Toast.makeText(ViewAccountActivity.this, R.string.suc_withdraw_val, Toast.LENGTH_LONG).show();
                     goToProfile();
                 }
