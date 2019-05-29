@@ -10,8 +10,7 @@
 
 
 Is test on this device:
-Pixel 3 API 35: resolution 1080*2160(440dpi) 
-
+Pixel 3 API 35: resolution 1080*2160 (440dpi) 
 
 ## Functionality:
 - User can signup
@@ -25,7 +24,6 @@ Pixel 3 API 35: resolution 1080*2160(440dpi)
 - Can Transfer money from one account to another account
 - Can withdraw money for an account
 - Can insert money into an account
-- Save data from realtime database
 
 - Can create bills
 - Can delete bills
