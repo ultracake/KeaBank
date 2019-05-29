@@ -24,6 +24,7 @@ import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.Bill;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
+import com.example.keabank.Services.AccountRepo;
 import com.example.keabank.Services.BillRepo;
 import com.example.keabank.Services.Myfunktions;
 
@@ -33,6 +34,7 @@ public class ViewBillActivity extends AppCompatActivity
     private User user;
     private Bill bill;
     private BillRepo billRepo;
+    private AccountRepo accountRepo;
     private Myfunktions myfunktions;
     private AccountNames accountNamesUser;
 
@@ -59,6 +61,8 @@ public class ViewBillActivity extends AppCompatActivity
 
     //alertDialog for verifying
     AlertDialog.Builder alertDialogVerify;
+    private String curAccountName;
+    private double curAccountVal;
 
     private LayoutInflater inflater;
     private View layout;
@@ -95,6 +99,7 @@ public class ViewBillActivity extends AppCompatActivity
 
         //class
         billRepo = new BillRepo();
+        accountRepo = new AccountRepo();
         myfunktions = new Myfunktions();
         accountNamesUser = new AccountNames();
 
@@ -104,6 +109,7 @@ public class ViewBillActivity extends AppCompatActivity
         textBillVal.setText(""+bill.getValue());
 
         textHasPaid = findViewById(R.id.textViewsStatusVal);
+       // Toast.makeText(ViewBillActivity.this, bill.getPaid(), Toast.LENGTH_LONG).show();
         if(bill.getPaid() == 1)
         {
             textHasPaid.setText(R.string.paid);
@@ -128,7 +134,13 @@ public class ViewBillActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                showSideMenu(showPayNow);
+                if (bill.getPaid() != 1)
+                {
+                    showSideMenu(showPayNow);
+                }else
+                {
+                    Toast.makeText(ViewBillActivity.this, R.string.already_paid, Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -138,8 +150,16 @@ public class ViewBillActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                resetAlertDialog();
-                alertDialogVerify.show();
+                curAccountName = spinnerSelectAccount.getSelectedItem().toString();
+                curAccountVal = myfunktions.checkWhichAccountValToUse(user,curAccountName);
+                if (bill.getValue() < curAccountVal)
+                {
+                    resetAlertDialog();
+                    alertDialogVerify.show();
+                } else
+                {
+                    Toast.makeText(ViewBillActivity.this, R.string.not_enough_val, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -202,6 +222,8 @@ public class ViewBillActivity extends AppCompatActivity
                 if (myfunktions.verifyWithLogin(email, password, user))
                 {
                     billRepo.payBill(bill.getName());
+                    accountRepo.transfer(user.getEmail(), myfunktions.findAccountID(curAccountName), curAccountVal - bill.getValue());
+                    goToListOfBills();
                 } else
                 {
                     Toast.makeText(ViewBillActivity.this, R.string.verify_wrong_login, Toast.LENGTH_LONG).show();
@@ -218,5 +240,12 @@ public class ViewBillActivity extends AppCompatActivity
                 Toast.makeText(ViewBillActivity.this, R.string.cancel, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void goToListOfBills()
+    {
+        intent = new Intent(ViewBillActivity.this, ListOfBillsActivity.class);
+        intent.putExtra(EXTRA_viewBill, user);
+        startActivity(intent);
     }
 }

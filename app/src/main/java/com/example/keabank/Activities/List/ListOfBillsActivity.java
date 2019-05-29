@@ -80,7 +80,12 @@ public class ListOfBillsActivity extends AppCompatActivity
             if (intent.getParcelableExtra(ListOfBillsActivity.EXTRA_viewBills) != null)
             {
                 user = intent.getParcelableExtra(ListOfBillsActivity.EXTRA_viewBills);
-                Log.d(TAG, "onCreate: ");
+                Log.d(TAG, "reload: ");
+            }
+            if (intent.getParcelableExtra(ViewBillActivity.EXTRA_viewBill) != null)
+            {
+                user = intent.getParcelableExtra(ViewBillActivity.EXTRA_viewBill);
+                Log.d(TAG, "from ViewBill: ");
             }
         }
 

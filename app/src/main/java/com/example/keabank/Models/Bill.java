@@ -31,12 +31,7 @@ public class Bill implements Parcelable
     {
         id = in.readString();
         name = in.readString();
-        if (in.readByte() == 0)
-        {
-            value = null;
-        } else {
-            value = in.readDouble();
-        }
+        value = in.readDouble();
         date = in.readInt();
         paid = in.readInt();
     }
