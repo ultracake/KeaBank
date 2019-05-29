@@ -12,11 +12,12 @@
 Is test on this device: Pixel 3 API 25: resolution 1080*2160 (440dpi) 
 
 ## Functionality:
-- User can signup
-- User can reset password
-- User can login
-- User can logout
-- User can Delete the whole account (user himself)
+**User**
+- signup
+- reset password
+- login
+- logout
+- Delete the whole user account (user himself)
 
 - Can create an account
 - Can view an account or a list of current accounts
