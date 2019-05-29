@@ -8,6 +8,11 @@
 - The user can create and store his/hers own bills in the firebase.
 - The app uses the realtime database.
 
+
+Is test on this device:
+Pixel 3 API 35: resolution 1080*2160(440dpi) 
+
+
 ## Functionality:
 - User can signup
 - User can reset password
@@ -23,9 +28,10 @@
 - Save data from realtime database
 
 - Can create bills
+- Can delete bills
 
 ## Extra Features:
-- might come
+- Might come
 
 ## Components used:
 - Buttons, Snackbar, Toast, Ratingbar, FloatingActionButton. Alertdialog
