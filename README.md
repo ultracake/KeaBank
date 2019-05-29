@@ -19,13 +19,17 @@ Is test on this device: Pixel 3 API 25: resolution 1080*2160 (440dpi)
 - logout
 - Delete the whole user account (user himself)
 
+**Account**
 - Can create an account
 - Can view an account or a list of current accounts
 - Can Transfer money from one account to another account
 - Can withdraw money for an account
 - Can insert money into an account
 
-- Can create bills
+**Bills**
+- Can create a bill
+- Can view a bill or a list of user´s bills
+- Can pay bills
 - Can delete bills
 
 ## Extra Features:
