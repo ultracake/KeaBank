@@ -174,7 +174,7 @@ public class ViewAccountActivity extends AppCompatActivity
         });
     }
 
-    public void showSideMenu(int insertOrWithdraw)
+    private void showSideMenu(int insertOrWithdraw)
     {
         if (insertOrWithdraw == 1 && !textInsertHidden.isShown())
         {

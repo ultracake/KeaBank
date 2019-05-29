@@ -60,7 +60,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textBillCurrentVal" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewsStatusVal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
@@ -80,7 +80,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/not_paid"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textViewStatus"
         app:layout_constraintTop_toBottomOf="@+id/textBillCurrentVal" />
 
     <Button
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewsStatusVal" />
 
     <Button
         android:id="@+id/butAutoPay"
@@ -104,5 +104,60 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/butPayBillNow" />
+
+    <ScrollView
+        android:id="@+id/HiddenScrollBill"
+        android:layout_width="match_parent"
+        android:layout_height="304dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butAutoPay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textSelectAccountHidden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/select_account"
+                android:textSize="28sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textSelectDateHidden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textHid_withdraw"
+                android:textSize="28sp"
+                android:visibility="gone" />
+
+            <Spinner
+                android:id="@+id/spinnerAccountToPayBill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30sp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/butConfirmPayBillNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/confirm"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/butConfirmPayBillAuto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/withdraw_val"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

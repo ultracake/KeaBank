@@ -59,4 +59,5 @@
     <string name="not_paid">Ikke betalt</string>
     <string name="pay_now">Betal nu</string>
     <string name="auto_pay">Auto betal</string>
+    <string name="confirm">Bekræft</string>
 </resources>

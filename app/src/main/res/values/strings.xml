@@ -59,4 +59,5 @@
     <string name="not_paid">Not paid</string>
     <string name="pay_now">Pay now</string>
     <string name="auto_pay">Auto pay</string>
+    <string name="confirm">Confirm</string>
 </resources>

@@ -31,18 +31,27 @@ public class Bill implements Parcelable
     {
         id = in.readString();
         name = in.readString();
-        value = in.readDouble();
+        if (in.readByte() == 0)
+        {
+            value = null;
+        } else {
+            value = in.readDouble();
+        }
+        date = in.readInt();
+        paid = in.readInt();
     }
 
     public static final Creator<Bill> CREATOR = new Creator<Bill>()
     {
         @Override
-        public Bill createFromParcel(Parcel in) {
+        public Bill createFromParcel(Parcel in)
+        {
             return new Bill(in);
         }
 
         @Override
-        public Bill[] newArray(int size) {
+        public Bill[] newArray(int size)
+        {
             return new Bill[size];
         }
     };

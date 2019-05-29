@@ -58,7 +58,7 @@ public class TransferActivity extends AppCompatActivity
 
     //alertDialog for verifying
     AlertDialog.Builder alertDialogVerify;
-   //private static final int myIDPopup = 3;
+
     private LayoutInflater inflater;
     private View layout;
     private EditText editVerEmail;
