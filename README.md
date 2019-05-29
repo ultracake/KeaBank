@@ -26,7 +26,7 @@ Is test on this device: Pixel 3 API 25: resolution 1080*2160 (440dpi)
 - Can withdraw money for an account
 - Can insert money into an account
 
-**Bills**
+**Bills** (stil working on this part)
 - Can create a bill
 - Can view a bill or a list of user´s bills
 - Can pay bills
