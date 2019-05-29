@@ -5,6 +5,7 @@
 - Each user will be stored in Firebase.
 - The user can create accounts and check his/hers account.
 - The user can Transfer, withdraw, insert money to own or others accounts.
+- The user can create and store his/hers own bills in the firebase.
 - The app uses the realtime database.
 
 ## Functionality:
@@ -21,7 +22,10 @@
 - Can insert money into an account
 - Save data from realtime database
 
+- Can create bills
+
 ## Extra Features:
+- might come
 
 ## Components used:
 - Buttons, Snackbar, Toast, Ratingbar, FloatingActionButton. Alertdialog
