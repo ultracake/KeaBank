@@ -110,7 +110,7 @@ public class TransferActivity extends AppCompatActivity
         spinnerYourAccount.setAdapter(arrayAdapterYA);
 
         spinnerToAccount = findViewById(R.id.spinnerToAccountT);
-        final ArrayAdapter arrayAdapterSelectedA = new ArrayAdapter(this, android.R.layout.simple_list_item_1, accountNamesSelectedTaget.getAccountNamesList());
+        ArrayAdapter arrayAdapterSelectedA = new ArrayAdapter(this, android.R.layout.simple_list_item_1, accountNamesSelectedTaget.getAccountNamesList());
         spinnerToAccount.setAdapter(arrayAdapterSelectedA);
 
 

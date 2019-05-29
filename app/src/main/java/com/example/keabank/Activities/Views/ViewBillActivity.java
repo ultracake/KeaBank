@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.keabank.Activities.List.ListOfBillsActivity;
 import com.example.keabank.Activities.TransferActivity;
+import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.Bill;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
@@ -32,6 +34,7 @@ public class ViewBillActivity extends AppCompatActivity
     private Bill bill;
     private BillRepo billRepo;
     private Myfunktions myfunktions;
+    private AccountNames accountNamesUser;
 
     private Intent intent;
 
@@ -93,6 +96,7 @@ public class ViewBillActivity extends AppCompatActivity
         //class
         billRepo = new BillRepo();
         myfunktions = new Myfunktions();
+        accountNamesUser = new AccountNames();
 
         textCurrentBillName = findViewById(R.id.textViewBillTitle);
         textCurrentBillName.setText(bill.getName());
@@ -110,6 +114,12 @@ public class ViewBillActivity extends AppCompatActivity
         textSelectAccountHidden = findViewById(R.id.textSelectAccountHidden);
         textSelectDateHidden = findViewById(R.id.textSelectDateHidden);
 
+        //setup for spinners
+        spinnerSelectAccount = findViewById(R.id.spinnerAccountToPayBill);
+        accountNamesUser = myfunktions.checkIfExistForViews(user, accountNamesUser);
+        accountNamesUser.getAccountNamesList().remove("Pension");
+        ArrayAdapter arrayAdapterYA = new ArrayAdapter(this, android.R.layout.simple_list_item_1, accountNamesUser.getAccountNamesList());
+        spinnerSelectAccount.setAdapter(arrayAdapterYA);
 
         //buttons
         butPayNow = findViewById(R.id.butPayBillNow);
@@ -142,6 +152,7 @@ public class ViewBillActivity extends AppCompatActivity
             //textSelectDateHidden.setVisibility(View.GONE);
            // butConfirmPayAuto.setVisibility(View.GONE);
 
+            spinnerSelectAccount.setVisibility(View.VISIBLE);
             textSelectAccountHidden.setVisibility(View.VISIBLE);
             butConfirmPayNow.setVisibility(View.VISIBLE);
         }
