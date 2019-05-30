@@ -9,7 +9,7 @@
 - The app uses the realtime database.
 
 **Note:** 
-Firebase can only read from database on change occur.
+Firebase can only read from database on change occur and does not work onclick methods.
 So could not make a repo for read data!!!
 
 Is test on this device: Pixel 3 API 25: resolution 1080*2160 (440dpi) 
@@ -29,10 +29,11 @@ Is test on this device: Pixel 3 API 25: resolution 1080*2160 (440dpi)
 - Can withdraw money for an account
 - Can insert money into an account
 
-**Bills** (stil working on this part)
+**Bills** 
 - Can create a bill
 - Can view a bill or a list of user´s bills
 - Can pay bills
+- Can auto pay bills after month
 - Can delete bills
 
 ## Extra Features:
