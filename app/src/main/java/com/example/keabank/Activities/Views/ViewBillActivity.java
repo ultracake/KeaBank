@@ -93,7 +93,6 @@ public class ViewBillActivity extends AppCompatActivity
             {
                 user = intent.getParcelableExtra(ListOfBillsActivity.EXTRA_viewBills);
                 bill = intent.getParcelableExtra(ListOfBillsActivity.EXTRA_bill);
-                //Toast.makeText(ViewBillActivity.this, " "+ bill.getPaid(), Toast.LENGTH_LONG).show();
                 Log.d(TAG, "onCreate: ");
             }
         }
@@ -110,7 +109,6 @@ public class ViewBillActivity extends AppCompatActivity
         textBillVal.setText(""+bill.getValue());
 
         textHasPaid = findViewById(R.id.textViewsStatusVal);
-        //Toast.makeText(ViewBillActivity.this, bill.getPaid(), Toast.LENGTH_LONG).show();
         if(bill.getPaid() == 1)
         {
             textHasPaid.setText(R.string.paid);

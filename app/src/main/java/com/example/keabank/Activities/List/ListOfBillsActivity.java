@@ -49,7 +49,6 @@ public class ListOfBillsActivity extends AppCompatActivity
 
     //snackbar
     private Snackbar snackbar;
-    private String nameForVal;
 
     //Buttons
     private Button butHome;
@@ -165,11 +164,10 @@ public class ListOfBillsActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                //Toast.makeText(ListOfBillsActivity.this, "you click: " + list.get(position).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ListOfBillsActivity.this, "you click: " + list.get(position).toString(), Toast.LENGTH_LONG).show();
 
                 intent = new Intent(ListOfBillsActivity.this, ViewBillActivity.class);
                 intent.putExtra(EXTRA_viewBills, user);
-                Toast.makeText(ListOfBillsActivity.this, " tste"+ myBillList.get(position).getPaid(), Toast.LENGTH_LONG).show();
                 intent.putExtra(EXTRA_bill, myBillList.get(position));
                 startActivity(intent);
             }
