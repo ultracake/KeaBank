@@ -36,6 +36,6 @@ Is test on this device: Pixel 3 API 25: resolution 1080*2160 (440dpi)
 - Might come
 
 ## Components used:
-- Buttons, Snackbar, Toast, Ratingbar, FloatingActionButton. Alertdialog
-- ViewList
+- Buttons, Snackbar, Toast, FloatingActionButton. Alertdialog
+- TextView, EditTextView
 - ScrollView
