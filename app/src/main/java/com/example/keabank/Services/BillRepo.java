@@ -58,4 +58,28 @@ public class BillRepo
             }
         });
     }
+
+    public void setDateBill(final String selectedbillName, final int date)
+    {
+        databaseReference.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                for (DataSnapshot billSnapShot : dataSnapshot.getChildren())
+                {
+                    bill = billSnapShot.getValue(Bill.class);
+                    if(selectedbillName.equals(bill.getName()))
+                    {
+                        databaseReference.child(bill.getName()).child("date").setValue(date);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+                Log.d(TAG, "set date bill Method: " + databaseError.getMessage());
+            }
+        });
+    }
 }

@@ -3,6 +3,9 @@ package com.example.keabank.Activities.Views;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.util.Calendar;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +30,11 @@ import com.example.keabank.R;
 import com.example.keabank.Services.AccountRepo;
 import com.example.keabank.Services.BillRepo;
 import com.example.keabank.Services.Myfunktions;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Collections;
+import java.util.Date;
 
 public class ViewBillActivity extends AppCompatActivity
 {
@@ -56,8 +64,10 @@ public class ViewBillActivity extends AppCompatActivity
     private int showPayNow = 1;
 
     private TextView textSelectDateHidden;
-    private Button butConfirmPayAuto;
+    private Button butConfirmAutoPay;
+    private Spinner spinnerSelectDate;
     private int showAutoPay = 0;
+    private Integer[] monthArray = {1,2,3,4,5,6,7,8,9,10,11,12};
 
     //alertDialog for verifying
     AlertDialog.Builder alertDialogVerify;
@@ -84,6 +94,7 @@ public class ViewBillActivity extends AppCompatActivity
         myInit();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void myInit()
     {
         intent = getIntent();
@@ -103,15 +114,36 @@ public class ViewBillActivity extends AppCompatActivity
         myfunktions = new Myfunktions();
         accountNamesUser = new AccountNames();
 
+
         textCurrentBillName = findViewById(R.id.textViewBillTitle);
         textCurrentBillName.setText(bill.getName());
         textBillVal = findViewById(R.id.textBillCurrentVal);
         textBillVal.setText(""+bill.getValue());
 
+        // (Calendar.MONTH) is zero index based, need to plus with 1
+        java.util.Date date= new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int month = cal.get(Calendar.MONTH) + 1;
+
         textHasPaid = findViewById(R.id.textViewsStatusVal);
         if(bill.getPaid() == 1)
         {
             textHasPaid.setText(R.string.paid);
+        }
+        if (bill.getDate() == month && bill.getPaid() != 1)
+        {
+            if (bill.getValue() < user.getBalanceDefault())
+            {
+                curAccountName = accountNamesUser.getAccountNamesList().get(2);
+                curAccountVal = myfunktions.checkWhichAccountValToUse(user,curAccountName);
+                payNow();
+                textHasPaid.setText(R.string.paid);
+                Toast.makeText(ViewBillActivity.this, R.string.suc_pay_bill, Toast.LENGTH_LONG).show();
+            }else
+            {
+                Toast.makeText(ViewBillActivity.this, R.string.not_enough_val, Toast.LENGTH_LONG).show();
+            }
         }
 
         //hidden menu
@@ -125,6 +157,10 @@ public class ViewBillActivity extends AppCompatActivity
         accountNamesUser.getAccountNamesList().remove("Pension");
         ArrayAdapter arrayAdapterYA = new ArrayAdapter(this, android.R.layout.simple_list_item_1, accountNamesUser.getAccountNamesList());
         spinnerSelectAccount.setAdapter(arrayAdapterYA);
+
+        spinnerSelectDate = findViewById(R.id.spinnerMonthToPayBill);
+        ArrayAdapter arrayAdapterDate = new ArrayAdapter(this, android.R.layout.simple_list_item_1, monthArray);
+        spinnerSelectDate.setAdapter(arrayAdapterDate);
 
         //buttons
         butPayNow = findViewById(R.id.butPayBillNow);
@@ -153,7 +189,40 @@ public class ViewBillActivity extends AppCompatActivity
                 curAccountVal = myfunktions.checkWhichAccountValToUse(user,curAccountName);
                 if (bill.getValue() < curAccountVal)
                 {
-                    resetAlertDialog();
+                    payNowAlertDialog();
+                    alertDialogVerify.show();
+                } else
+                {
+                    Toast.makeText(ViewBillActivity.this, R.string.not_enough_val, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        butAutoPay = findViewById(R.id.butAutoPay);
+        butAutoPay.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if (bill.getPaid() != 1)
+                {
+                    showSideMenu(showAutoPay);
+                }else
+                {
+                    Toast.makeText(ViewBillActivity.this, R.string.already_paid, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        butConfirmAutoPay = findViewById(R.id.butConfirmPayBillAuto);
+        butConfirmAutoPay.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if (bill.getValue() < user.getBalanceDefault())
+                {
+                    payAutoAlertDialog();
                     alertDialogVerify.show();
                 } else
                 {
@@ -165,25 +234,27 @@ public class ViewBillActivity extends AppCompatActivity
 
     private void showSideMenu(int insertOrWithdraw)
     {
-
         if (insertOrWithdraw == 1 && !textSelectAccountHidden.isShown())
         {
-            //textSelectDateHidden.setVisibility(View.GONE);
-           // butConfirmPayAuto.setVisibility(View.GONE);
+            textSelectDateHidden.setVisibility(View.GONE);
+            spinnerSelectDate.setVisibility(View.GONE);
+            butConfirmAutoPay.setVisibility(View.GONE);
 
             spinnerSelectAccount.setVisibility(View.VISIBLE);
             textSelectAccountHidden.setVisibility(View.VISIBLE);
             butConfirmPayNow.setVisibility(View.VISIBLE);
         }
-/*
+
         if (insertOrWithdraw == 0 && !textSelectDateHidden.isShown())
         {
             textSelectAccountHidden.setVisibility(View.GONE);
+            spinnerSelectAccount.setVisibility(View.GONE);
             butConfirmPayNow.setVisibility(View.GONE);
 
             textSelectDateHidden.setVisibility(View.VISIBLE);
-            butConfirmPayAuto.setVisibility(View.VISIBLE);
-        }*/
+            spinnerSelectDate.setVisibility(View.VISIBLE);
+            butConfirmAutoPay.setVisibility(View.VISIBLE);
+        }
 
         if (scrollView.isShown())
         {
@@ -196,7 +267,7 @@ public class ViewBillActivity extends AppCompatActivity
     }
 
     //if I don´t reset everything in alertDialog it will crash program after second call!
-    private void resetAlertDialog()
+    private void payNowAlertDialog()
     {
         //popup window
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -220,9 +291,59 @@ public class ViewBillActivity extends AppCompatActivity
 
                 if (myfunktions.verifyWithLogin(email, password, user))
                 {
-                    billRepo.payBill(bill.getName());
-                    accountRepo.transfer(user.getEmail(), myfunktions.findAccountID(curAccountName), curAccountVal - bill.getValue());
+                    payNow();
                     Toast.makeText(ViewBillActivity.this, R.string.suc_pay_bill, Toast.LENGTH_LONG).show();
+                    goToListOfBills();
+                } else
+                {
+                    Toast.makeText(ViewBillActivity.this, R.string.verify_wrong_login, Toast.LENGTH_LONG).show();
+                    alertDialogVerify.setCancelable(true);
+                }
+            }
+        });
+        //on cancel
+        alertDialogVerify.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                Toast.makeText(ViewBillActivity.this, R.string.cancel, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void payNow()
+    {
+        billRepo.payBill(bill.getName());
+        accountRepo.transfer(user.getEmail(), myfunktions.findAccountID(curAccountName), curAccountVal - bill.getValue());
+    }
+
+    private void payAutoAlertDialog()
+    {
+        //popup window
+        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layout = inflater.inflate(R.layout.popup_verify_with_login, (ViewGroup) findViewById(R.id.root));
+        editVerEmail = layout.findViewById(R.id.editVerifyEmail);
+        editVerPassword = layout.findViewById(R.id.editVerifyPassword);
+
+        //alertDialog
+        alertDialogVerify = new AlertDialog.Builder(this);
+        alertDialogVerify.setView(layout);
+        alertDialogVerify.setMessage(R.string.verify_transfer);
+
+        //on confirm
+        alertDialogVerify.setPositiveButton(R.string.verify, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                email = editVerEmail.getText().toString();
+                password = editVerPassword.getText().toString();
+
+                if (myfunktions.verifyWithLogin(email, password, user))
+                {
+                    billRepo.setDateBill(bill.getName(), (Integer) spinnerSelectDate.getSelectedItem());
+                    Toast.makeText(ViewBillActivity.this, R.string.suc_set_date_bill, Toast.LENGTH_LONG).show();
                     goToListOfBills();
                 } else
                 {

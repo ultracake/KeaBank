@@ -128,16 +128,23 @@
                 android:textSize="28sp"
                 android:visibility="gone" />
 
+            <Spinner
+                android:id="@+id/spinnerAccountToPayBill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30sp"
+                android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/textSelectDateHidden"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/textHid_withdraw"
+                android:text="@string/select_date_pay"
                 android:textSize="28sp"
                 android:visibility="gone" />
 
             <Spinner
-                android:id="@+id/spinnerAccountToPayBill"
+                android:id="@+id/spinnerMonthToPayBill"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="30sp"
@@ -154,7 +161,7 @@
                 android:id="@+id/butConfirmPayBillAuto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/withdraw_val"
+                android:text="@string/confirm"
                 android:visibility="gone" />
 
         </LinearLayout>
