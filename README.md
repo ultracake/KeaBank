@@ -8,7 +8,7 @@
 - The user can create and store his/hers own bills in the firebase.
 - The app uses the realtime database.
 
-**Note** 
+**Note:** 
 Firebase can only read from database on change occur.
 So could not make a repo for read data!!!
 
