@@ -27,26 +27,50 @@ public class Bill implements Parcelable
         this.paid = 0;
     }
 
+
     protected Bill(Parcel in)
     {
         id = in.readString();
         name = in.readString();
-        value = in.readDouble();
+        if (in.readByte() == 0) {
+            value = null;
+        } else {
+            value = in.readDouble();
+        }
         date = in.readInt();
         paid = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeString(id);
+        dest.writeString(name);
+        if (value == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(value);
+        }
+        dest.writeInt(date);
+        dest.writeInt(paid);
+    }
+
+    @Override
+    public int describeContents()
+    {
+        return 0;
     }
 
     public static final Creator<Bill> CREATOR = new Creator<Bill>()
     {
         @Override
-        public Bill createFromParcel(Parcel in)
-        {
+        public Bill createFromParcel(Parcel in) {
             return new Bill(in);
         }
 
         @Override
-        public Bill[] newArray(int size)
-        {
+        public Bill[] newArray(int size) {
             return new Bill[size];
         }
     };
@@ -91,19 +115,5 @@ public class Bill implements Parcelable
         this.date = date;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags)
-    {
-        dest.writeString(id);
-        dest.writeString(name);
-        dest.writeDouble(value);
-        dest.writeInt(paid);
-        dest.writeInt(date);
-    }
 
-    @Override
-    public int describeContents()
-    {
-        return 0;
-    }
 }

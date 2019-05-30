@@ -61,4 +61,5 @@
     <string name="auto_pay">Auto pay</string>
     <string name="confirm">Confirm</string>
     <string name="already_paid">It is already been paid!</string>
+    <string name="suc_pay_bill">The bill was paid successfully</string>
 </resources>

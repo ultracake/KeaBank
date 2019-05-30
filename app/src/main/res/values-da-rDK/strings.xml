@@ -61,4 +61,5 @@
     <string name="auto_pay">Auto betal</string>
     <string name="confirm">Bekræft</string>
     <string name="already_paid">Den er allerede betalt!</string>
+    <string name="suc_pay_bill">"Regningen er betalt "</string>
 </resources>
