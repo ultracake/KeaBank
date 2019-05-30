@@ -64,4 +64,5 @@
     <string name="suc_pay_bill">The bill was paid successfully</string>
     <string name="select_date_pay">Select a month where your bill will be paid from your Default account:</string>
     <string name="suc_set_date_bill">You have now set a date for payment</string>
+    <string name="suc_auto_pay">Your bill is now pay by date</string>
 </resources>

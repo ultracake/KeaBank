@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.keabank.Activities.List.ListOfBillsActivity;
-import com.example.keabank.Activities.TransferActivity;
 import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.Bill;
 import com.example.keabank.Models.User;
@@ -31,9 +30,6 @@ import com.example.keabank.Services.AccountRepo;
 import com.example.keabank.Services.BillRepo;
 import com.example.keabank.Services.Myfunktions;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Collections;
 import java.util.Date;
 
 public class ViewBillActivity extends AppCompatActivity
@@ -47,6 +43,11 @@ public class ViewBillActivity extends AppCompatActivity
     private AccountNames accountNamesUser;
 
     private Intent intent;
+
+    //Date
+    private Date date;
+    private Calendar cal;
+    private int month;
 
     //widgets
     private TextView textCurrentBillName;
@@ -85,6 +86,7 @@ public class ViewBillActivity extends AppCompatActivity
     private static final String TAG = "MyTest";
     public static final String EXTRA_viewBill = "User";
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -94,7 +96,7 @@ public class ViewBillActivity extends AppCompatActivity
         myInit();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void myInit()
     {
         intent = getIntent();
@@ -121,10 +123,10 @@ public class ViewBillActivity extends AppCompatActivity
         textBillVal.setText(""+bill.getValue());
 
         // (Calendar.MONTH) is zero index based, need to plus with 1
-        java.util.Date date= new Date();
-        Calendar cal = Calendar.getInstance();
+        date= new Date();
+        cal = Calendar.getInstance();
         cal.setTime(date);
-        int month = cal.get(Calendar.MONTH) + 1;
+        month = cal.get(Calendar.MONTH) + 1;
 
         textHasPaid = findViewById(R.id.textViewsStatusVal);
         if(bill.getPaid() == 1)
@@ -139,7 +141,7 @@ public class ViewBillActivity extends AppCompatActivity
                 curAccountVal = myfunktions.checkWhichAccountValToUse(user,curAccountName);
                 payNow();
                 textHasPaid.setText(R.string.paid);
-                Toast.makeText(ViewBillActivity.this, R.string.suc_pay_bill, Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewBillActivity.this, R.string.suc_auto_pay, Toast.LENGTH_LONG).show();
             }else
             {
                 Toast.makeText(ViewBillActivity.this, R.string.not_enough_val, Toast.LENGTH_LONG).show();
