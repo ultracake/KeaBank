@@ -37,7 +37,7 @@ Is test on this device: Pixel 3 API 25: resolution 1080*2160 (440dpi)
 - Can delete bills
 
 ## Extra Features:
-- Might come
+- Change langauge (Danish, Englsih)
 
 ## Components used:
 - Buttons, Snackbar, Toast, FloatingActionButton. Alertdialog
