@@ -29,9 +29,9 @@ public class BillRepo
         this.databaseReference = database.getReference().child("Bills");
     }
 
-    public void createBill(User user, String name, Double value)
+    public void createBill(User user, String name, Double value, String emailTo, int accountIDTo)
     {
-        bill = new Bill(user.getId(),name, value);
+        bill = new Bill(user.getId(),name, value, emailTo, accountIDTo);
         databaseReference.child(name).setValue(bill);
     }
 

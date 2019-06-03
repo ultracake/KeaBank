@@ -60,6 +60,54 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textViewReceiverEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/receiver_email"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBillCurrentVal" />
+
+    <TextView
+        android:id="@+id/textViewsInsertReceiverEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewReceiverEmail"
+        app:layout_constraintTop_toBottomOf="@+id/textBillCurrentVal" />
+
+    <TextView
+        android:id="@+id/textViewReceiverAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/receiver_account"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewReceiverEmail" />
+
+    <TextView
+        android:id="@+id/textViewsInsertReceiverAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewReceiverAccount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewsInsertReceiverEmail" />
+
+    <TextView
         android:id="@+id/textViewStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,7 +117,7 @@
         android:text="@string/status"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textBillCurrentVal" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewReceiverAccount" />
 
     <TextView
         android:id="@+id/textViewsStatusVal"
@@ -81,7 +129,7 @@
         android:text="@string/not_paid"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textViewStatus"
-        app:layout_constraintTop_toBottomOf="@+id/textBillCurrentVal" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewsInsertReceiverAccount" />
 
     <Button
         android:id="@+id/butPayBillNow"
@@ -92,7 +140,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewsStatusVal" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatus" />
 
     <Button
         android:id="@+id/butAutoPay"

@@ -65,4 +65,6 @@
     <string name="select_date_pay">Vælg en dato din regning skal betales fra din Default konto:</string>
     <string name="suc_set_date_bill">Du har nu sat en dato for betaling</string>
     <string name="suc_auto_pay">Din regning er nu betalt efter dato</string>
+    <string name="receiver_email">Modtagerens email:</string>
+    <string name="receiver_account">Modtagerens konto:</string>
 </resources>

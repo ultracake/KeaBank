@@ -52,6 +52,8 @@ public class ViewBillActivity extends AppCompatActivity
     //widgets
     private TextView textCurrentBillName;
     private TextView textBillVal;
+    private TextView textReceiverEmail;
+    private TextView textReceiverAccount;
     private TextView textHasPaid;
 
     private Button butPayNow;
@@ -116,11 +118,16 @@ public class ViewBillActivity extends AppCompatActivity
         myfunktions = new Myfunktions();
         accountNamesUser = new AccountNames();
 
-
         textCurrentBillName = findViewById(R.id.textViewBillTitle);
         textCurrentBillName.setText(bill.getName());
         textBillVal = findViewById(R.id.textBillCurrentVal);
         textBillVal.setText(""+bill.getValue());
+
+        textReceiverEmail = findViewById(R.id.textViewsInsertReceiverEmail);
+        textReceiverEmail.setText(bill.getEmailTo());
+        textReceiverAccount = findViewById(R.id.textViewsInsertReceiverAccount);
+        textReceiverAccount.setText(accountNamesUser.getAccountNamesList().get(bill.getAccountIDTo()));
+
 
         // (Calendar.MONTH) is zero index based, need to plus with 1
         date= new Date();
@@ -317,6 +324,7 @@ public class ViewBillActivity extends AppCompatActivity
     private void payNow()
     {
         billRepo.payBill(bill.getName());
+
         accountRepo.transfer(user.getEmail(), myfunktions.findAccountID(curAccountName), curAccountVal - bill.getValue());
     }
 

@@ -7,29 +7,32 @@ public class Bill implements Parcelable
 {
     //user info
     private String id;
+
     //bill info
     private String name;
     private Double value;
     private int date;
     private int paid;
 
+    //receiver info
     private String emailTo;
-    private int accountToID;
+    private int accountIDTo;
 
     //empty constructor for Firebase
     public Bill()
     {
     }
 
-    public Bill(String id, String name, Double value)
+    public Bill(String id, String name, Double value, String emailTo, int accountIDTo)
     {
         this.id = id;
         this.name = name;
         this.value = value;
+        this.emailTo = emailTo;
+        this.accountIDTo = accountIDTo;
         this.date = 0;
         this.paid = 0;
     }
-
 
     protected Bill(Parcel in)
     {
@@ -42,6 +45,8 @@ public class Bill implements Parcelable
         }
         date = in.readInt();
         paid = in.readInt();
+        emailTo = in.readString();
+        accountIDTo = in.readInt();
     }
 
     @Override
@@ -57,6 +62,8 @@ public class Bill implements Parcelable
         }
         dest.writeInt(date);
         dest.writeInt(paid);
+        dest.writeString(emailTo);
+        dest.writeInt(accountIDTo);
     }
 
     @Override
@@ -118,5 +125,19 @@ public class Bill implements Parcelable
         this.date = date;
     }
 
+    public String getEmailTo() {
+        return emailTo;
+    }
 
+    public void setEmailTo(String emailTo) {
+        this.emailTo = emailTo;
+    }
+
+    public int getAccountIDTo() {
+        return accountIDTo;
+    }
+
+    public void setAccountIDTo(int accountIDTo) {
+        this.accountIDTo = accountIDTo;
+    }
 }
