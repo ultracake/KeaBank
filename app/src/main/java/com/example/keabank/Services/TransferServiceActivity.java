@@ -49,8 +49,9 @@ public class TransferServiceActivity extends AppCompatActivity
 
     private String selectedUserAccount = "";
     private String selectedEmail = "";
+
+    private boolean showToast;
     private static final String TAG = "MyTest";
-    public static final String EXTRA_transferServiceUser = "user";
 
     //Firbase
     private DatabaseReference databaseReference;
@@ -88,6 +89,7 @@ public class TransferServiceActivity extends AppCompatActivity
         accountRepo = new AccountRepo();
         myfunktions = new Myfunktions();
 
+        showToast = true;
         currentUserAccountVal = myfunktions.checkWhichAccountValToUse(user, selectedUserAccount);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("User");
@@ -109,12 +111,17 @@ public class TransferServiceActivity extends AppCompatActivity
                         //to
                         accountRepo.transfer(selectedEmail, idSelectedAForDB, value + selectedsAccountsVal);
 
+                        showToast = false;
                         Toast.makeText(TransferServiceActivity.this, selectedEmail + " got: " + value, Toast.LENGTH_LONG).show();
-                        goToProfile();
-
                     }
                 }
+
+                if (showToast)
+                {
+                    Toast.makeText(TransferServiceActivity.this, R.string.doesnt_exist_email , Toast.LENGTH_LONG).show();
+                }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError)
             {
@@ -122,14 +129,7 @@ public class TransferServiceActivity extends AppCompatActivity
             }
         });
 
-        goBackTransfer();
-    }
-
-    private void goBackTransfer()
-    {
-        intent = new Intent(TransferServiceActivity.this, TransferActivity.class);
-        intent.putExtra(EXTRA_transferServiceUser,user);
-        startActivity(intent);
+        goToProfile();
     }
 
     private void goToProfile()

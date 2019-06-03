@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.keabank.Activities.List.ListOfBillsActivity;
@@ -23,9 +24,7 @@ public class CreateBillActivity extends AppCompatActivity
 {
     //class
     private BillRepo billRepo;
-    private Myfunktions myfunktions;
     private User user;
-    private Bill bill;
     private AccountNames accountNames;
 
     private Intent intent;
@@ -35,6 +34,10 @@ public class CreateBillActivity extends AppCompatActivity
 
     private EditText editInsertNameBill;
     private EditText editInsertBillVal;
+
+    private EditText editSelectedEmail;
+    private Spinner spinnerToAccount;
+    
     private Button butCreateBill;
 
     @Override

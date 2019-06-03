@@ -87,14 +87,48 @@
         app:layout_constraintStart_toEndOf="@+id/editInsertValueBill"
         app:layout_constraintTop_toBottomOf="@+id/textViewCreateBillTitle" />
 
+    <TextView
+        android:id="@+id/textWhoToTransferBill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/select_who_transfer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewKr" />
+
+    <EditText
+        android:id="@+id/editSelectedEmailBill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textWhoToTransferBill" />
+
+    <Spinner
+        android:id="@+id/spinnerToAccountBill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSelectedEmailBill" />
+
     <Button
         android:id="@+id/butCreateBill"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:text="@string/Create_bill"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewKr" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerToAccountBill" />
 
 
 

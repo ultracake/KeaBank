@@ -86,12 +86,6 @@ public class TransferActivity extends AppCompatActivity
                 user = intent.getParcelableExtra(ViewAccountActivity.EXTRA_viewAccount);
                 Log.d(TAG, "onCreate: ");
             }
-            else if(intent.getParcelableExtra(TransferServiceActivity.EXTRA_transferServiceUser) != null)
-            {
-                Toast.makeText(TransferActivity.this, R.string.doesnt_exist_email , Toast.LENGTH_LONG).show();
-                user = intent.getParcelableExtra(TransferServiceActivity.EXTRA_transferServiceUser);
-                Log.d(TAG, "onCreate back form transfer: ");
-            }
         }
 
         //class

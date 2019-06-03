@@ -25,7 +25,7 @@
     <string name="have_to_insert">Du skal insætte noget</string>
     <string name="register_success">"Du er nu registreret "</string>
     <string name="how_much">Hvor meget vil du gerne overfører</string>
-    <string name="select_who_transfer">Skriv email  og vælg hvem du vil overføre til:</string>
+    <string name="select_who_transfer">Skriv email og vælg en konto du vil overføre til:</string>
     <string name="transfer_complete">Overførelse er komplet</string>
     <string name="in_progress">I gang med overførelsen</string>
     <string name="textHid_insert">Indsæt et beløb til din Konto:</string>

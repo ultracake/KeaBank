@@ -13,6 +13,9 @@ public class Bill implements Parcelable
     private int date;
     private int paid;
 
+    private String emailTo;
+    private int accountToID;
+
     //empty constructor for Firebase
     public Bill()
     {

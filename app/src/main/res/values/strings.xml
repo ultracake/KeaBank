@@ -25,7 +25,7 @@
     <string name="have_to_insert">Please insert something</string>
     <string name="register_success">You´re now register successfully</string>
     <string name="how_much">How much would you like to transfer</string>
-    <string name="select_who_transfer">Write email and select who you want to transfer to:</string>
+    <string name="select_who_transfer">Write email and select the account you want to transfer to:</string>
     <string name="transfer_complete">Transfer Complete</string>
     <string name="in_progress">In progress</string>
     <string name="textHid_insert">Insert the value you want to your account:</string>
