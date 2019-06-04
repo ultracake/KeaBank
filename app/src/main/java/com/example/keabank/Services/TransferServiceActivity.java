@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import com.example.keabank.Activities.ProfileActivity;
 import com.example.keabank.Activities.TransferActivity;
+import com.example.keabank.Activities.Views.ViewBillActivity;
+import com.example.keabank.Models.AccountNames;
+import com.example.keabank.Models.Bill;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
 import com.google.firebase.database.DataSnapshot;
@@ -37,7 +40,10 @@ public class TransferServiceActivity extends AppCompatActivity
     //class
     private User user;
     private User selectedUser;
+    private Bill bill;
+    private AccountNames accountNames;
     private AccountRepo accountRepo;
+    private BillRepo billRepo;
     private Myfunktions myfunktions;
 
     private Intent intent;
@@ -68,6 +74,12 @@ public class TransferServiceActivity extends AppCompatActivity
 
     private void myInit()
     {
+        //class
+        accountNames = new AccountNames();
+        accountRepo = new AccountRepo();
+        billRepo = new BillRepo();
+        myfunktions = new Myfunktions();
+
         intent = getIntent();
         if (intent != null)
         {
@@ -83,11 +95,21 @@ public class TransferServiceActivity extends AppCompatActivity
 
                 Log.d(TAG, "onCreate: ");
             }
-        }
+            else if(intent.getParcelableExtra(ViewBillActivity.EXTRA_viewBillUser) != null)
+            {
+                user = intent.getParcelableExtra(ViewBillActivity.EXTRA_viewBillUser);
+                bill = intent.getParcelableExtra(ViewBillActivity.EXTRA_viewBillBill);
 
-        //class
-        accountRepo = new AccountRepo();
-        myfunktions = new Myfunktions();
+                selectedUserAccount = accountNames.getAccountNamesList().get(2);
+                value = bill.getValue();
+                idYAForDB = 2;
+
+                selectedEmail = bill.getEmailTo();
+                idSelectedAForDB = bill.getAccountIDTo();
+
+                Log.d(TAG, "onCreate: ");
+            }
+        }
 
         showToast = true;
         currentUserAccountVal = myfunktions.checkWhichAccountValToUse(user, selectedUserAccount);
@@ -113,6 +135,12 @@ public class TransferServiceActivity extends AppCompatActivity
 
                         showToast = false;
                         Toast.makeText(TransferServiceActivity.this, selectedEmail + " got: " + value, Toast.LENGTH_LONG).show();
+
+                        if(bill != null)
+                        {
+                            billRepo.payBill(bill.getName());
+                            Toast.makeText(TransferServiceActivity.this, R.string.suc_pay_bill, Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
 

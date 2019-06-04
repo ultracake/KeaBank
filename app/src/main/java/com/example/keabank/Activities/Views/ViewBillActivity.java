@@ -26,9 +26,9 @@ import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.Bill;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
-import com.example.keabank.Services.AccountRepo;
 import com.example.keabank.Services.BillRepo;
 import com.example.keabank.Services.Myfunktions;
+import com.example.keabank.Services.TransferServiceActivity;
 
 import java.util.Date;
 
@@ -38,7 +38,6 @@ public class ViewBillActivity extends AppCompatActivity
     private User user;
     private Bill bill;
     private BillRepo billRepo;
-    private AccountRepo accountRepo;
     private Myfunktions myfunktions;
     private AccountNames accountNamesUser;
 
@@ -86,7 +85,8 @@ public class ViewBillActivity extends AppCompatActivity
 
     //to next activity
     private static final String TAG = "MyTest";
-    public static final String EXTRA_viewBill = "User";
+    public static final String EXTRA_viewBillUser = "User";
+    public static final String EXTRA_viewBillBill = "Bill";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -114,7 +114,6 @@ public class ViewBillActivity extends AppCompatActivity
 
         //class
         billRepo = new BillRepo();
-        accountRepo = new AccountRepo();
         myfunktions = new Myfunktions();
         accountNamesUser = new AccountNames();
 
@@ -144,8 +143,6 @@ public class ViewBillActivity extends AppCompatActivity
         {
             if (bill.getValue() < user.getBalanceDefault())
             {
-                curAccountName = accountNamesUser.getAccountNamesList().get(2);
-                curAccountVal = myfunktions.checkWhichAccountValToUse(user,curAccountName);
                 payNow();
                 textHasPaid.setText(R.string.paid);
                 Toast.makeText(ViewBillActivity.this, R.string.suc_auto_pay, Toast.LENGTH_LONG).show();
@@ -301,8 +298,6 @@ public class ViewBillActivity extends AppCompatActivity
                 if (myfunktions.verifyWithLogin(email, password, user))
                 {
                     payNow();
-                    Toast.makeText(ViewBillActivity.this, R.string.suc_pay_bill, Toast.LENGTH_LONG).show();
-                    goToListOfBills();
                 } else
                 {
                     Toast.makeText(ViewBillActivity.this, R.string.verify_wrong_login, Toast.LENGTH_LONG).show();
@@ -323,9 +318,11 @@ public class ViewBillActivity extends AppCompatActivity
 
     private void payNow()
     {
-        billRepo.payBill(bill.getName());
+        intent = new Intent(ViewBillActivity.this, TransferServiceActivity.class);
+        intent.putExtra(EXTRA_viewBillUser, user);
+        intent.putExtra(EXTRA_viewBillBill, bill);
+        startActivity(intent);
 
-        accountRepo.transfer(user.getEmail(), myfunktions.findAccountID(curAccountName), curAccountVal - bill.getValue());
     }
 
     private void payAutoAlertDialog()
@@ -376,7 +373,7 @@ public class ViewBillActivity extends AppCompatActivity
     private void goToListOfBills()
     {
         intent = new Intent(ViewBillActivity.this, ListOfBillsActivity.class);
-        intent.putExtra(EXTRA_viewBill, user);
+        intent.putExtra(EXTRA_viewBillUser, user);
         startActivity(intent);
     }
 }

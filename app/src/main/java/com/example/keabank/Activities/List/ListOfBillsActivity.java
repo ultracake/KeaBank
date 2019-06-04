@@ -16,13 +16,10 @@ import android.widget.Toast;
 
 import com.example.keabank.Activities.Create.CreateBillActivity;
 import com.example.keabank.Activities.ProfileActivity;
-import com.example.keabank.Activities.Views.ViewAccountActivity;
 import com.example.keabank.Activities.Views.ViewBillActivity;
-import com.example.keabank.Models.AccountNames;
 import com.example.keabank.Models.Bill;
 import com.example.keabank.Models.User;
 import com.example.keabank.R;
-import com.example.keabank.Services.Myfunktions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -81,9 +78,9 @@ public class ListOfBillsActivity extends AppCompatActivity
                 user = intent.getParcelableExtra(ListOfBillsActivity.EXTRA_viewBills);
                 Log.d(TAG, "reload: ");
             }
-            if (intent.getParcelableExtra(ViewBillActivity.EXTRA_viewBill) != null)
+            if (intent.getParcelableExtra(ViewBillActivity.EXTRA_viewBillUser) != null)
             {
-                user = intent.getParcelableExtra(ViewBillActivity.EXTRA_viewBill);
+                user = intent.getParcelableExtra(ViewBillActivity.EXTRA_viewBillUser);
                 Log.d(TAG, "from ViewBill: ");
             }
         }
