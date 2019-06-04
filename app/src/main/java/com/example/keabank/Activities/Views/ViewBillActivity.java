@@ -275,16 +275,7 @@ public class ViewBillActivity extends AppCompatActivity
     //if I don´t reset everything in alertDialog it will crash program after second call!
     private void payNowAlertDialog()
     {
-        //popup window
-        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        layout = inflater.inflate(R.layout.popup_verify_with_login, (ViewGroup) findViewById(R.id.root));
-        editVerEmail = layout.findViewById(R.id.editVerifyEmail);
-        editVerPassword = layout.findViewById(R.id.editVerifyPassword);
-
-        //alertDialog
-        alertDialogVerify = new AlertDialog.Builder(this);
-        alertDialogVerify.setView(layout);
-        alertDialogVerify.setMessage(R.string.verify_transfer);
+        alertInit();
 
         //on confirm
         alertDialogVerify.setPositiveButton(R.string.verify, new DialogInterface.OnClickListener()
@@ -327,16 +318,7 @@ public class ViewBillActivity extends AppCompatActivity
 
     private void payAutoAlertDialog()
     {
-        //popup window
-        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        layout = inflater.inflate(R.layout.popup_verify_with_login, (ViewGroup) findViewById(R.id.root));
-        editVerEmail = layout.findViewById(R.id.editVerifyEmail);
-        editVerPassword = layout.findViewById(R.id.editVerifyPassword);
-
-        //alertDialog
-        alertDialogVerify = new AlertDialog.Builder(this);
-        alertDialogVerify.setView(layout);
-        alertDialogVerify.setMessage(R.string.verify_transfer);
+        alertInit();
 
         //on confirm
         alertDialogVerify.setPositiveButton(R.string.verify, new DialogInterface.OnClickListener()
@@ -368,6 +350,20 @@ public class ViewBillActivity extends AppCompatActivity
                 Toast.makeText(ViewBillActivity.this, R.string.cancel, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void alertInit()
+    {
+        //popup window
+        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layout = inflater.inflate(R.layout.popup_verify_with_login, (ViewGroup) findViewById(R.id.root));
+        editVerEmail = layout.findViewById(R.id.editVerifyEmail);
+        editVerPassword = layout.findViewById(R.id.editVerifyPassword);
+
+        //alertDialog
+        alertDialogVerify = new AlertDialog.Builder(this);
+        alertDialogVerify.setView(layout);
+        alertDialogVerify.setMessage(R.string.verify_transfer);
     }
 
     private void goToListOfBills()
